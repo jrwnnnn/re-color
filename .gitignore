@@ -1,5 +1,8 @@
-# build output
+# Astro build output
 dist/
+
+# Electron build output
+release/
 
 # generated types
 .astro/
@@ -27,9 +30,6 @@ pnpm-debug.log*
 Thumbs.db
 ehthumbs.db
 Desktop.ini
-
-# VS Code
-.vscode/
 
 # Test Files
 test*
