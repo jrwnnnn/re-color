@@ -1,16 +1,58 @@
 {
-  "name": "astro-temp",
+  "name": "re-color",
+  "description": "Hello World!",
+  "author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
+  "license": "MIT",
   "type": "module",
+  "main": "main.js",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "astro:dev": "astro dev",
+    "astro:build": "astro build",
+    "astro:preview": "astro preview",
+    "electron:dev": "concurrently \"astro dev\" \"wait-on http://localhost:4321 && electron .\"",
+    "electron:build": "astro build && electron-builder"
+  },
+  "build": {
+    "appId": "com.cs2a.re-color",
+    "productName": "Re:Color Test",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.17.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^40.1.0",
+    "electron-builder": "^26.7.0",
+    "electron-serve": "^3.0.1",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "wait-on": "^9.0.3"
   }
 }
