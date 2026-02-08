@@ -1,11 +1,11 @@
 {
   "name": "re-color",
-  "description": "Hello World!",
+  "description": "A Colorblind-Friendly Paint App.",
   "author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
   "license": "MIT",
   "type": "module",
   "main": "main.js",
-  "version": "0.0.2",
+  "version": "0.0.2-pre",
   "scripts": {
     "astro": "astro",
     "astro:dev": "astro dev",
@@ -16,7 +16,7 @@
   },
   "build": {
     "appId": "com.cs2a.re-color",
-    "productName": "Re:Color Pre-Release",
+    "productName": "Re:Color Preflight",
     "directories": {
       "output": "release"
     },
