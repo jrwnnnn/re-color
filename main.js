@@ -3,10 +3,10 @@
 
 import { app, BrowserWindow } from "electron";
 import serve from "electron-serve";
-import path from "path";
-import { fileURLToPath } from "url";
+// import path from "path";
+// import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const loadURL = serve({ directory: "dist" });
 
 let window;
