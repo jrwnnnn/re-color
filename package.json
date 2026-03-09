@@ -7,12 +7,13 @@
   "main": "main.js",
   "version": "0.0.2-pre",
   "scripts": {
-    "astro": "astro",
     "astro:dev": "astro dev",
     "astro:build": "astro build",
     "astro:preview": "astro preview",
     "electron:dev": "concurrently \"astro dev\" \"wait-on http://localhost:4321 && electron .\"",
-    "electron:build": "astro build && electron-builder"
+    "electron:build": "astro build && electron-builder",
+    "lint": "eslint .",
+    "typecheck": "astro check && tsc --noEmit"
   },
   "build": {
     "appId": "com.cs2a.re-color",
@@ -69,6 +70,8 @@
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
     "wait-on": "^9.0.3"
   }
 }
