@@ -1,11 +1,11 @@
 {
   "name": "re-color",
-  "description": "Hello World!",
+  "description": "A Colorblind-Friendly Paint App.",
   "author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
   "license": "MIT",
   "type": "module",
   "main": "main.js",
-  "version": "0.0.1",
+  "version": "0.0.2-pre",
   "scripts": {
     "astro:dev": "astro dev",
     "astro:build": "astro build",
@@ -17,7 +17,7 @@
   },
   "build": {
     "appId": "com.cs2a.re-color",
-    "productName": "Re:Color Test",
+    "productName": "Re:Color Preflight",
     "directories": {
       "output": "release"
     },
@@ -27,7 +27,23 @@
       "package.json"
     ],
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.exe"
     },
     "mac": {
       "target": "dmg"
@@ -37,23 +53,20 @@
     }
   },
   "dependencies": {
+    "electron-serve": "^3.0.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/react": "^4.4.2",
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.17.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwindcss": "^4.1.18"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@eslint/js": "^9.39.3",
     "concurrently": "^9.2.1",
     "electron": "^40.1.0",
     "electron-builder": "^26.7.0",
-    "electron-serve": "^3.0.1",
-    "eslint": "^9.39.3",
+    "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
@@ -61,6 +74,9 @@
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "wait-on": "^9.0.3"

@@ -1,5 +1,4 @@
-// TODO: Add app icon, authors, description at package.json
-// ! Users can open developer tools by pressing Ctrl + Shift + I
+// TODO: Add app icon
 
 import { app, BrowserWindow } from "electron";
 import serve from "electron-serve";
