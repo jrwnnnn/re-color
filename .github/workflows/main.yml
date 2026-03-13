@@ -64,7 +64,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run astro:build
+        run: npm run electron:build
 
       - name: Prune dev dependencies
         run: npm prune --production
