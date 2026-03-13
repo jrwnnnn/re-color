@@ -47,7 +47,7 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   build:
-    needs: [lint, typecheck]
+    needs: [lint, typecheck, codeql]
     runs-on: windows-latest
     permissions:
       contents: read
@@ -66,11 +66,8 @@ jobs:
       - name: Build
         run: npm run electron:build
 
-      - name: Prune dev dependencies
-        run: npm prune --production
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: re-color
-          path: .
+          path: release/
