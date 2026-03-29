@@ -11,7 +11,7 @@
     "astro:build": "astro build",
     "astro:preview": "astro preview",
     "electron:dev": "concurrently \"astro dev\" \"wait-on http://localhost:4321 && electron .\"",
-    "electron:build": "astro build && electron-builder",
+    "electron:build": "astro build && electron-builder --publish never",
     "lint": "eslint .",
     "typecheck": "astro check && tsc --noEmit"
   },
