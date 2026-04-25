@@ -1,5 +1,54 @@
-# Vue 3 + TypeScript + Vite
+<h1 align="center">Project Name</h1>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center"><i>Quick one-liner about what this project does.</i></p>
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+<p align="center">
+   <!-- FIND PREMADE BADGES HERE: https://github.com/Ileriayo/markdown-badges -->
+   <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-0C1222?style=for-the-badge&logo=astro&logoColor=FDFDFE">
+   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></a>
+   <a href="https://opensource.org/license/mit"><img src="https://img.shields.io/badge/MIT-green?style=for-the-badge"></a>
+   <a href="https://github.com/jrwnnnn/template-astro"><img src="https://img.shields.io/github/stars/jrwnnnn/template-global?style=for-the-badge"></a> <!-- <---- CHANGE -->
+</p>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Prerequisites
+
+Make sure the following are installed:
+
+- [Node.js](https://nodejs.org/en/download/current)
+
+## Development
+
+```bash
+#Clone the repository
+git clone https://github.com/jrwnnnn/repo.git  <---- CHANGE
+cd block1a
+
+#Install the required dependencies
+npm install
+
+#Run the program
+npm run dev
+```
+
+## License
+
+Distributed under the MIT License.
+Copyright (c) 2025 Mark Jerwin(@jrwnnnn). All rights reserved.
+
+See the See the [LICENSE](LICENSE) file for full details.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+## Contributors
+
+<a href="https://github.com/USERNAME/REPO/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=USERNAME/REPO" />
+</a>
+
+<br>
+
+<img src="https://forthebadge.com/images/badges/built-with-love.svg">
