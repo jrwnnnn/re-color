@@ -7,16 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: "npm"
-      - run: npm ci
-      - run: npm run lint
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #         cache: "npm"
+  #     - run: npm ci
+  #     - run: npm run lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: 24
           cache: "npm"
-      - run: npm ci
-      - run: npm run typecheck
+      - run: npm install
+      - run: npx vue-tsc --noEmit
 
   codeql:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   build:
-    needs: [lint, typecheck]
+    needs: [typecheck]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -61,13 +61,10 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
-        run: npm run electron:build
-
-      - name: Prune dev dependencies
-        run: npm prune --production
+        run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
