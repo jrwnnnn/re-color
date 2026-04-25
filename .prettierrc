@@ -1,12 +1,13 @@
 {
-  "bracketSameLine": false,
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro"
-      }
-    }
-  ]
+	"useTabs": true,
+	"bracketSameLine": false,
+	"plugins": ["prettier-plugin-tailwindcss"],
+	"overrides": [
+		{
+			"files": "*.vue",
+			"options": {
+				"parser": "vue"
+			}
+		}
+	]
 }

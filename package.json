@@ -1,84 +1,28 @@
 {
-  "name": "re-color",
-  "description": "A Colorblind-Friendly Paint App.",
-  "author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
-  "license": "MIT",
-  "type": "module",
-  "main": "main.js",
-  "version": "0.0.2-pre",
-  "scripts": {
-    "astro:dev": "astro dev",
-    "astro:build": "astro build",
-    "astro:preview": "astro preview",
-    "electron:dev": "concurrently \"astro dev\" \"wait-on http://localhost:4321 && electron .\"",
-    "electron:build": "astro build && electron-builder --publish never",
-    "lint": "eslint .",
-    "typecheck": "astro check && tsc --noEmit"
-  },
-  "build": {
-    "appId": "com.cs2a.re-color",
-    "productName": "Re:Color Preflight",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist/**/*",
-      "main.js",
-      "package.json"
-    ],
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        },
-        {
-          "target": "portable",
-          "arch": [
-            "x64"
-          ]
-        }
-      ]
-    },
-    "portable": {
-      "artifactName": "${productName}-${version}-portable.exe"
-    },
-    "mac": {
-      "target": "dmg"
-    },
-    "linux": {
-      "target": "AppImage"
-    }
-  },
-  "dependencies": {
-    "electron-serve": "^3.0.1"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/react": "^4.4.2",
-    "@eslint/js": "^9.39.4",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.13",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^6.0.4",
-    "concurrently": "^9.2.1",
-    "electron": "^40.8.5",
-    "electron-builder": "^26.7.0",
-    "eslint": "^9.39.4",
-    "eslint-plugin-astro": "^1.6.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.4.0",
-    "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1",
-    "wait-on": "^9.0.3"
-  }
+	"name": "re-color",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc -b && vite build",
+		"preview": "vite preview",
+		"typecheck": "vue-tsc --noEmit",
+		"test": "vue-tsc --noEmit && npm run build"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.2.4",
+		"tailwindcss": "^4.2.4",
+		"vue": "^3.5.32"
+	},
+	"devDependencies": {
+		"@types/node": "^24.12.2",
+		"@vitejs/plugin-vue": "^6.0.6",
+		"@vue/tsconfig": "^0.9.1",
+		"prettier": "^3.8.3",
+		"prettier-plugin-tailwindcss": "^0.7.3",
+		"typescript": "~6.0.2",
+		"vite": "^8.0.10",
+		"vue-tsc": "^3.2.7"
+	}
 }

@@ -7,16 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: "npm"
-      - run: npm ci
-      - run: npm run lint
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #         cache: "npm"
+  #     - run: npm ci
+  #     - run: npm run lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
           node-version: 24
           cache: "npm"
       - run: npm ci
-      - run: npm run typecheck
+      - run: npx vue-tsc --noEmit
 
   codeql:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   build:
-    needs: [lint, typecheck]
+    needs: [typecheck]
     runs-on: ubuntu-latest
     permissions:
       contents: read
