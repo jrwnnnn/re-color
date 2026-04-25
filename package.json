@@ -6,13 +6,10 @@
 	"main": "main.js",
 	"version": "1.0.0-alpha.1",
 	"scripts": {
-		"dev:vue": "vite",
-		"dev:electron": "electron main.js",
-		"dev": "concurrently \"npm run dev:vue\" \"npm run dev:electron\"",
+		"dev": "concurrently \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
-		"preview": "vite preview",
 		"typecheck": "vue-tsc --noEmit",
-		"test": "vue-tsc --noEmit && npm run build"
+		"test": "npm run typecheck && npm run build"
 	},
 	"build": {
 		"appId": "com.teamReColor.recolor",
