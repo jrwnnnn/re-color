@@ -10,6 +10,7 @@
 		"dev:electron": "electron main.js",
 		"dev": "concurrently \"npm run dev:vue\" \"npm run dev:electron\"",
 		"build": "vite build && electron-builder",
+		"release": "vite build && electron-builder --publish always",
 		"preview": "vite preview",
 		"typecheck": "vue-tsc --noEmit",
 		"test": "vue-tsc --noEmit && npm run build"
