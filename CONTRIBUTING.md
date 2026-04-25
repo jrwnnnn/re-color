@@ -1,4 +1,4 @@
-****# Contributing
+# Contributing
 
 First off, thanks for taking the time to contribute! These are the guidelines for contributing to this project.
 
