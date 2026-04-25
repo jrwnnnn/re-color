@@ -64,10 +64,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run electron:build
-
-      - name: Prune dev dependencies
-        run: npm prune --production
+        run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
