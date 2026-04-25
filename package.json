@@ -4,7 +4,7 @@
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
 	"main": "main.js",
-	"version": "0.0.1",
+	"version": "1.0.0-alpha.1",
 	"scripts": {
 		"dev:vue": "vite",
 		"dev:electron": "electron main.js",
