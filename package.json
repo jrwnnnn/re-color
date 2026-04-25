@@ -8,8 +8,9 @@
 	"scripts": {
 		"dev": "concurrently \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
+		"lint": "eslint .",
 		"typecheck": "vue-tsc --noEmit",
-		"test": "npm run typecheck && npm run build"
+		"test": "npm run lint && npm run typecheck && npm run build"
 	},
 	"build": {
 		"appId": "com.teamReColor.recolor",
