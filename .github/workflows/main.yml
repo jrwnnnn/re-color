@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: 24
           cache: "npm"
-      - run: npm install
-      - run: npx vue-tsc --noEmit
+      - run: npm ci
+      - run: npm run typecheck
 
   codeql:
     runs-on: ubuntu-latest
@@ -47,21 +47,19 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   build:
-    needs: [typecheck]
-    runs-on: ubuntu-latest
+    needs: [typecheck, codeql]
+    runs-on: windows-latest
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
@@ -70,4 +68,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: re-color
-          path: .
+          path: release/
