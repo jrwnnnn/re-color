@@ -1,14 +1,15 @@
-# Astro build output
+# build output
 dist/
+dist-ssr/
 
-# Electron build output
-release/
-
-# generated types
-.astro/
+# vite
+*.local
 
 # dependencies
 node_modules/
+
+# test Files
+test*
 
 # logs
 npm-debug.log*
@@ -20,16 +21,17 @@ pnpm-debug.log*
 .env
 .env.production
 
+# private keys and certificates
+*.key
+*.pem
+
+# windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Test Files
-test*
