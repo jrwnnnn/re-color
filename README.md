@@ -11,7 +11,8 @@
 </p>
 
 Gawa namin nila jieben and jerwin
-
+Three CS students with no valid future ahead
+  
 ## Prerequisites
 
 Make sure the following are installed:
