@@ -12,7 +12,7 @@
 
 Gawa namin nila jieben and jerwin
 Three CS students with no valid future ahead
-  
+
 ## Support
 
 If you run into any issues, please [open an issue](https://github.com/jrwnnnn/re-color/issues) and include all relevant details needed to diagnose the problem.
