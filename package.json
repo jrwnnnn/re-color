@@ -4,15 +4,12 @@
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
 	"main": "main.js",
-	"version": "0.0.1",
+	"version": "1.0.0-alpha.1",
 	"scripts": {
-		"dev:vue": "vite",
-		"dev:electron": "electron main.js",
-		"dev": "concurrently \"npm run dev:vue\" \"npm run dev:electron\"",
+		"dev": "concurrently \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
-		"preview": "vite preview",
 		"typecheck": "vue-tsc --noEmit",
-		"test": "vue-tsc --noEmit && npm run build"
+		"test": "npm run typecheck && npm run build"
 	},
 	"build": {
 		"appId": "com.teamReColor.recolor",
@@ -29,6 +26,12 @@
 				"nsis",
 				"portable"
 			]
+		},
+		"nsis": {
+			"artifactName": "${productName} ${version}-Setup.${ext}"
+		},
+		"portable": {
+			"artifactName": "${productName} ${version}-Portable.${ext}"
 		}
 	},
 	"dependencies": {},
