@@ -10,27 +10,12 @@
    <a href="https://github.com/jrwnnnn/template-astro"><img src="https://img.shields.io/github/stars/jrwnnnn/template-global?style=for-the-badge"></a> <!-- <---- CHANGE -->
 </p>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Gawa namin nila jieben and jerwin
+Three CS students with no valid future ahead
 
-## Prerequisites
+## Support
 
-Make sure the following are installed:
-
-- [Node.js](https://nodejs.org/en/download/current)
-
-## Development
-
-```bash
-#Clone the repository
-git clone https://github.com/jrwnnnn/repo.git  <---- CHANGE
-cd block1a
-
-#Install the required dependencies
-npm install
-
-#Run the program
-npm run dev
-```
+If you run into any issues, please [open an issue](https://github.com/jrwnnnn/re-color/issues) and include all relevant details needed to diagnose the problem.
 
 ## License
 
