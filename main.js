@@ -16,6 +16,8 @@ function createWindow() {
 	!app.isPackaged
 		? win.loadURL("http://localhost:5173")
 		: win.loadFile("dist/index.html");
+
+	win.removeMenu();
 }
 
 app.whenReady().then(createWindow);
