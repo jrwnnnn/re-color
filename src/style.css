@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+	--color-surface: var(--color-zinc-900);
+	--color-panel: var(--color-zinc-800);
+	--color-panel-dark: var(--color-zinc-950);
+	--color-accent: var(--color-zinc-700);
+	--color-highlight: var(--color-blue-500);
+	--color-muted: var(--color-zinc-500);
+	--text-xxs: 10px;
+}
+
+html,
+body,
+#app {
+	@apply bg-surface h-full w-full overflow-hidden text-white;
+	font-family: "Segoe UI", system-ui, sans-serif;
+	user-select: none;
+}
