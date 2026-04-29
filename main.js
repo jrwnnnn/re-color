@@ -3,7 +3,7 @@ const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
 function createWindow() {
-	const window = new BrowserWindow({
+	const win = new BrowserWindow({
 		width: 800,
 		height: 600,
 		webPreferences: {
@@ -13,11 +13,9 @@ function createWindow() {
 		},
 	});
 
-	if (!app.isPackaged) {
-		window.loadURL("http://localhost:5173");
-	} else {
-		window.loadFile("dist/index.html");
-	}
+	!app.isPackaged
+		? win.loadURL("http://localhost:5173")
+		: win.loadFile("dist/index.html");
 }
 
 app.whenReady().then(createWindow);
