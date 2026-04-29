@@ -6,7 +6,7 @@
 	"main": "main.js",
 	"version": "1.0.0",
 	"scripts": {
-		"dev": "concurrently \"vite\" \"electron main.js\"",
+		"dev": "concurrently --kill-others \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
 		"lint": "eslint .",
 		"typecheck": "vue-tsc --noEmit",
