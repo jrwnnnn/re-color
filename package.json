@@ -35,9 +35,16 @@
 			"artifactName": "${productName} ${version}-Portable.${ext}"
 		}
 	},
+	"dependencies": {
+		"color-namer": "^1.4.0",
+		"konva": "^9.3.6",
+		"pinia": "^2.1.7",
+		"vue": "^3.5.32"
+	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@tailwindcss/vite": "^4.2.4",
+		"@types/color-namer": "^1.3.3",
 		"@types/node": "^24.12.2",
 		"@vitejs/plugin-vue": "^6.0.6",
 		"@vue/tsconfig": "^0.9.1",
@@ -53,7 +60,6 @@
 		"typescript": "~6.0.2",
 		"typescript-eslint": "^8.59.0",
 		"vite": "^8.0.10",
-		"vue": "^3.5.32",
 		"vue-tsc": "^3.2.7"
 	}
 }
