@@ -4,8 +4,6 @@ const path = require("path");
 
 function createWindow() {
 	const win = new BrowserWindow({
-		width: 1400,
-		height: 900,
 		minWidth: 900,
 		minHeight: 600,
 		webPreferences: {
@@ -16,12 +14,14 @@ function createWindow() {
 		},
 	});
 
+	win.maximize();
+
 	const menu = Menu.buildFromTemplate([
 		{
 			label: "File",
 			submenu: [
 				{
-					label: "New Painting",
+					label: "New",
 					accelerator: "CmdOrCtrl+N",
 					click: () => win.webContents.send("menu:new-painting"),
 				},
@@ -33,12 +33,23 @@ function createWindow() {
 			label: "View",
 			submenu: [
 				{ role: "reload" },
-				{ role: "toggleDevTools" },
+				!app.isPackaged && { role: "toggleDevTools" },
 				{ type: "separator" },
 				{ role: "resetZoom" },
 				{ role: "zoomIn" },
 				{ role: "zoomOut" },
 				{ role: "togglefullscreen" },
+			],
+		},
+		{
+			label: "Help",
+			submenu: [
+				{
+					label: "Report an Issue",
+				},
+				{
+					label: "About Re:Color",
+				},
 			],
 		},
 	]);
