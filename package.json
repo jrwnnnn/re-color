@@ -14,7 +14,7 @@
 	},
 	"build": {
 		"appId": "com.teamReColor.recolor",
-		"productName": "Re:Color Pre-Flight",
+		"productName": "Re:Color",
 		"files": [
 			"dist/**/*",
 			"main.js",
