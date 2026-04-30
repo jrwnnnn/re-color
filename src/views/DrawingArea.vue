@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import Toolbar from "../components/ToolBar.vue";
-import ColorBar from "../components/ColorBar.vue";
-import StatusBar from "../components/StatusBar.vue";
 import { useCanvasStore } from "../stores/useCanvasStore";
 import { useColorStore } from "../stores/useColorStore";
 import { useStage } from "../lib/useStage";
 import { useTools } from "../lib/useTools";
 import { useKeyboardShortcuts } from "../lib/useKeyboardShortcuts";
+import Toolbar from "../components/ToolBar.vue";
+import ColorBar from "../components/ColorBar.vue";
+import StatusBar from "../components/StatusBar.vue";
 
 const canvasStore = useCanvasStore();
 const colorStore = useColorStore();
@@ -49,7 +49,10 @@ onUnmounted(() => destroy());
 	>
 		<div class="flex min-h-0 flex-1 overflow-hidden">
 			<Toolbar />
-			<div class="relative flex-1 overflow-hidden bg-surface">
+			<div
+				class="bg-surface relative flex-1 overflow-hidden"
+				:style="{ filter: colorStore.cssFilter }"
+			>
 				<div ref="containerRef" class="h-full w-full"></div>
 			</div>
 		</div>
