@@ -17,7 +17,7 @@ npm ci
 ```
 Start the development server:
 ```bash
-npm run dev       # optional: pass --host flag expose the server to the local network
+npm run dev
 ```
 Bundle the project for production:
 ```bash
@@ -30,6 +30,9 @@ Before submitting a pull request, ensure everything passes locally:
 # Run all unit tests
 npm run test
 
+# Run eslint
+npm run linting
+
 # Run typechecking
 npm run typecheck
 ```
@@ -37,6 +40,7 @@ npm run typecheck
 
 All pull requests must pass the [GitHub Actions](https://github.com/jrwnnnn/re-color/actions/workflows/main.yml) before they can be merged. The CI runs the following checks:
 
+- Linting
 - Typechecking
 - Build
 - CodeQL analysis
