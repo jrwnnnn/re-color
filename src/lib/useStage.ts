@@ -33,6 +33,9 @@ export function useStage(
 		stage.add(bgLayer);
 
 		drawLayer = new Konva.Layer();
+		drawLayer.clipFunc((ctx) => {
+			ctx.rect(0, 0, stage.width(), stage.height());
+		});
 		stage.add(drawLayer);
 
 		window.addEventListener("resize", handleResize);
@@ -50,6 +53,7 @@ export function useStage(
 		stage.width(width);
 		stage.height(height);
 		(bgLayer.findOne("Rect") as Konva.Rect).setAttrs({ width, height });
+		drawLayer.clipFunc((ctx) => ctx.rect(0, 0, width, height));
 		bgLayer.batchDraw();
 	}
 
