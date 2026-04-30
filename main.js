@@ -33,7 +33,6 @@ function createWindow() {
 			label: "View",
 			submenu: [
 				{ role: "reload" },
-				!app.isPackaged && { role: "toggleDevTools" },
 				{ type: "separator" },
 				{ role: "resetZoom" },
 				{ role: "zoomIn" },
