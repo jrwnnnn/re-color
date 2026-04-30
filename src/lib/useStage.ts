@@ -1,19 +1,23 @@
 import Konva from "konva";
 
+const CANVAS_WIDTH = 1920;
+const CANVAS_HEIGHT = 1080;
+
 export function useStage(
 	containerRef: Readonly<{ value: HTMLDivElement | undefined }>,
 ) {
 	// Konva.Stage  wraps all layers and owns the <canvas> element.
-	// We never put this in a Vue ref because Konva manages its own reactivity internally.
 	let stage: Konva.Stage;
 
 	// bgLayer is a static white rectangle that never gets drawn on.
-	// It exists purely so the eraser has something to reveal — eraser uses
+	// Eraser reveals this layer.
 	let bgLayer: Konva.Layer;
 
 	// This layer is where all user strokes live.
 	let drawLayer: Konva.Layer;
 
+	// Creates the stage, adds the white background, adds the drawing layer,
+	// then calls fitToViewport so the canvas starts centered and scaled to fit the window.
 	function init() {
 		const { width, height } = containerRef.value!.getBoundingClientRect();
 
@@ -24,8 +28,8 @@ export function useStage(
 			new Konva.Rect({
 				x: 0,
 				y: 0,
-				width,
-				height,
+				width: CANVAS_WIDTH,
+				height: CANVAS_HEIGHT,
 				fill: "#ffffff",
 				listening: false,
 			}),
@@ -34,29 +38,47 @@ export function useStage(
 
 		drawLayer = new Konva.Layer();
 		drawLayer.clipFunc((ctx) => {
-			ctx.rect(0, 0, stage.width(), stage.height());
+			ctx.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 		});
 		stage.add(drawLayer);
+
+		fitToViewport(width, height);
 
 		window.addEventListener("resize", handleResize);
 		stage.on("wheel", handleWheel);
 	}
 
+	// Cleanup when the component unmounts. No memory leaks :)))
 	function destroy() {
 		window.removeEventListener("resize", handleResize);
 		stage?.destroy();
 	}
 
+	// Figures out the biggest the canvas can be while still fitting inside the
+	// window with some breathing room. Then centers it.
+	function fitToViewport(viewportW: number, viewportH: number) {
+		const scale =
+			Math.min(viewportW / CANVAS_WIDTH, viewportH / CANVAS_HEIGHT) * 0.9;
+		stage.scale({ x: scale, y: scale });
+		stage.position({
+			x: (viewportW - CANVAS_WIDTH * scale) / 2,
+			y: (viewportH - CANVAS_HEIGHT * scale) / 2,
+		});
+		stage.batchDraw();
+	}
+
+	// When the window is resized, update the stage size to match the new window size.
 	function handleResize() {
 		if (!containerRef.value) return;
 		const { width, height } = containerRef.value.getBoundingClientRect();
 		stage.width(width);
 		stage.height(height);
-		(bgLayer.findOne("Rect") as Konva.Rect).setAttrs({ width, height });
-		drawLayer.clipFunc((ctx) => ctx.rect(0, 0, width, height));
-		bgLayer.batchDraw();
+		stage.batchDraw();
 	}
 
+	// Scroll to zoom. Keeps the point under your cursor fixed while zooming.
+	// If the canvas is smaller than the viewport it centers it, if it's bigger it
+	// clamps so the user can't scroll past the edges.
 	function handleWheel(e: Konva.KonvaEventObject<WheelEvent>) {
 		e.evt.preventDefault();
 
@@ -65,7 +87,6 @@ export function useStage(
 		const pointer = stage.getPointerPosition()!;
 		const rawScale = e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
-		// Allow zoom out, but don't go below 0.1 or above 8
 		const newScale = Math.max(0.1, Math.min(8, rawScale));
 
 		stage.scale({ x: newScale, y: newScale });
@@ -76,25 +97,21 @@ export function useStage(
 		let newX = pointer.x - (pointer.x - stage.x()) * (newScale / oldScale);
 		let newY = pointer.y - (pointer.y - stage.y()) * (newScale / oldScale);
 
-		// If canvas is smaller than viewport, center it instead of clamping
-		if (newScale < 1) {
-			newX = (w - w * newScale) / 2;
-			newY = (h - h * newScale) / 2;
+		const canvasW = CANVAS_WIDTH * newScale;
+		const canvasH = CANVAS_HEIGHT * newScale;
+		if (canvasW < w && canvasH < h) {
+			newX = (w - canvasW) / 2;
+			newY = (h - canvasH) / 2;
 		} else {
-			// Clamping only applies when zoomed in
-			newX = Math.min(0, Math.max(newX, w - w * newScale));
-			newY = Math.min(0, Math.max(newY, h - h * newScale));
+			newX = Math.min(0, Math.max(newX, w - canvasW));
+			newY = Math.min(0, Math.max(newY, h - canvasH));
 		}
 
 		stage.position({ x: newX, y: newY });
 		stage.batchDraw();
 	}
 
-	/*
-	This converts screen-space mouse coordinates to canvas-space coordinates.
-	When zoomed in, the stage is scaled and offset dividing by scale and
-	subtracting the stage's position gives the true point on the canvas.\
-	*/
+	// Translates your mouse position on screen to the actual coordinate on the canvas.
 	function getPos() {
 		const scale = stage.scaleX();
 		const pointer = stage.getPointerPosition()!;
@@ -104,14 +121,15 @@ export function useStage(
 		};
 	}
 
+	// Creates a new clean canvas.
 	function newCanvas() {
 		if (!confirm("Start a new painting? Your current work will be lost."))
 			return;
 		drawLayer.destroyChildren();
 		drawLayer.batchDraw();
-		stage.scale({ x: 1, y: 1 });
-		stage.position({ x: 0, y: 0 });
-		stage.batchDraw();
+
+		const { width, height } = containerRef.value!.getBoundingClientRect();
+		fitToViewport(width, height);
 	}
 
 	return {
