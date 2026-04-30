@@ -18,7 +18,7 @@
 		"files": [
 			"dist/**/*",
 			"main.js",
-			"preload.js",
+			"preload.js"
 		],
 		"directories": {
 			"output": "release"
