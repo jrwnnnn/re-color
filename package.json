@@ -17,7 +17,8 @@
 		"productName": "Re:Color Pre-Flight",
 		"files": [
 			"dist/**/*",
-			"main.js"
+			"main.js",
+			"preload.js",
 		],
 		"directories": {
 			"output": "release"
