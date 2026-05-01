@@ -25,15 +25,14 @@
 		},
 		"win": {
 			"target": [
-				"nsis",
-				"portable"
+				"nsis"
 			]
 		},
 		"nsis": {
-			"artifactName": "${productName} ${version}-Setup.${ext}"
-		},
-		"portable": {
-			"artifactName": "${productName} ${version}-Portable.${ext}"
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": true,
+			"artifactName": "${productName}-v${version}-x64.${ext}",
+			"license": "LICENSE"
 		}
 	},
 	"dependencies": {
