@@ -21,13 +21,41 @@ export const PALETTE = [
 	{ hex: "#7B2D8B" },
 ];
 
+export type ColorblindMode =
+	| "normal"
+	| "deuteranopia"
+	| "protanopia"
+	| "tritanopia";
+
+const CSS_FILTERS: Record<ColorblindMode, string> = {
+	normal: "none",
+	deuteranopia: "url(#deuteranopia)",
+	protanopia: "url(#protanopia)",
+	tritanopia: "url(#tritanopia)",
+};
+
 export const useColorStore = defineStore("color", () => {
 	const activeColor = ref("#000000");
+
+	// Persisted so the user's mode survives app restarts
+	const mode = ref<ColorblindMode>(
+		(localStorage.getItem("colorblindMode") as ColorblindMode) ?? "normal",
+	);
+
+	// color-namer compares the hex against thousands of named colors and returns
+	// the closest match. .ntc[0].name uses the "Name That Color" dataset
 	const colorName = computed(() => colorNamer(activeColor.value).ntc[0].name);
+
+	const cssFilter = computed(() => CSS_FILTERS[mode.value]);
 
 	function setColor(hex: string) {
 		activeColor.value = hex;
 	}
 
-	return { activeColor, colorName, setColor };
+	function setMode(m: ColorblindMode) {
+		mode.value = m;
+		localStorage.setItem("colorblindMode", m);
+	}
+
+	return { activeColor, colorName, mode, cssFilter, setColor, setMode };
 });
