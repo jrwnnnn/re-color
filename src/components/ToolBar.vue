@@ -1,46 +1,47 @@
 <script setup lang="ts">
-import { useCanvasStore, type Tool } from "../stores/useCanvasStore";
+import { useCanvasStore, type Tool } from "@/stores/useCanvasStore";
 import type { Component } from "vue";
-import BrushIcon from "../assets/brush-tool.svg?component";
-import EraserIcon from "../assets/eraser-tool.svg?component";
-import LineIcon from "../assets/line-tool.svg?component";
-import RectIcon from "../assets/rect-tool.svg?component";
-import CircleIcon from "../assets/circle-tool.svg?component";
+import BrushIcon from "@/assets/brush-tool.svg?component";
+import EraserIcon from "@/assets/eraser-tool.svg?component";
+import LineIcon from "@/assets/line-tool.svg?component";
+import RectIcon from "@/assets/rect-tool.svg?component";
+import CircleIcon from "@/assets/circle-tool.svg?component";
 
 const store = useCanvasStore();
 
-const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] = [
-	{
-		id: "brush",
-		label: "Brush",
-		shortcut: "B",
-		icon: BrushIcon,
-	},
-	{
-		id: "eraser",
-		label: "Eraser",
-		shortcut: "E",
-		icon: EraserIcon,
-	},
-	{
-		id: "line",
-		label: "Line",
-		shortcut: "L",
-		icon: LineIcon,
-	},
-	{
-		id: "rect",
-		label: "Rect",
-		shortcut: "R",
-		icon: RectIcon,
-	},
-	{
-		id: "circle",
-		label: "Circle",
-		shortcut: "C",
-		icon: CircleIcon,
-	},
-];
+const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
+	[
+		{
+			id: "brush",
+			label: "Brush",
+			shortcut: "B",
+			icon: BrushIcon,
+		},
+		{
+			id: "eraser",
+			label: "Eraser",
+			shortcut: "E",
+			icon: EraserIcon,
+		},
+		{
+			id: "line",
+			label: "Line",
+			shortcut: "L",
+			icon: LineIcon,
+		},
+		{
+			id: "rect",
+			label: "Rect",
+			shortcut: "R",
+			icon: RectIcon,
+		},
+		{
+			id: "circle",
+			label: "Circle",
+			shortcut: "C",
+			icon: CircleIcon,
+		},
+	];
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useColorStore, PALETTE } from "../stores/useColorStore";
+import { useColorStore, PALETTE } from "@/stores/useColorStore";
 import colorNamer from "color-namer";
 const colorStore = useColorStore();
 </script>

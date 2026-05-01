@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCanvasStore } from "../stores/useCanvasStore";
-import { useColorStore } from "../stores/useColorStore";
+import { useCanvasStore } from "@/stores/useCanvasStore";
+import { useColorStore } from "@/stores/useColorStore";
 
 const canvasStore = useCanvasStore();
 const colorStore = useColorStore();
