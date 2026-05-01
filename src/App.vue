@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import DrawingArea from "./views/DrawingArea.vue";
 </script>
 
 <template>
-  <HelloWorld />
+	<DrawingArea />
 </template>
