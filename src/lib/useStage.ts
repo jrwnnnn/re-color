@@ -132,11 +132,37 @@ export function useStage(
 		fitToViewport(width, height);
 	}
 
+	// Exports the canvas as a PNG data URL.
+	// Resets zoom/pan to 1:1 so we can capture the whole canvas,
+	// then restores back the previous zoom/pan.
+	function exportCanvas() {
+		const prevScale = stage.scaleX();
+		const prevPos = stage.position();
+
+		stage.scale({ x: 1, y: 1 });
+		stage.position({ x: 0, y: 0 });
+
+		const dataURL = stage.toDataURL({
+			x: 0,
+			y: 0,
+			width: CANVAS_WIDTH,
+			height: CANVAS_HEIGHT,
+			pixelRatio: 1,
+		});
+
+		stage.scale({ x: prevScale, y: prevScale });
+		stage.position(prevPos);
+		stage.batchDraw();
+
+		return dataURL;
+	}
+
 	return {
 		init,
 		destroy,
 		getPos,
 		newCanvas,
+		exportCanvas,
 		getStage: () => stage,
 		getDrawLayer: () => drawLayer,
 	};
