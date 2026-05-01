@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch, ref } from "vue";
-import { useColorStore, PALETTE } from "../stores/useColorStore";
+import { useColorStore, PALETTE } from "@/stores/useColorStore";
 import Pickr from "@simonwep/pickr";
 import colorNamer from "color-namer";
 
