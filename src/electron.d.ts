@@ -1,5 +1,8 @@
 interface Window {
 	electronAPI?: {
-		onNewPainting: (callback: () => void) => void;
+		onNewCanvas: (callback: () => void) => void;
+		onExport: (callback: () => void) => void;
+		saveImage: (dataURL: string) => Promise<void>;
+		onSetMode: (callback: (mode: string) => void) => void;
 	};
 }
