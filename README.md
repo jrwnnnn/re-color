@@ -1,36 +1,22 @@
-<h1 align="center">Project Name</h1>
+<h1 align="center">Re:Color</h1>
 
-<p align="center"><i>Quick one-liner about what this project does.</i></p>
+<p align="center"><i>A paint app for people with color-vision difficulties. </i></p>
 
 <p align="center">
    <!-- FIND PREMADE BADGES HERE: https://github.com/Ileriayo/markdown-badges -->
-   <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-0C1222?style=for-the-badge&logo=astro&logoColor=FDFDFE">
+   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"></a>
+   <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white"></a>
+   <a href="https://vuejs.org"><img src="https://img.shields.io/badge/vue.js-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D"></a>
    <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></a>
    <a href="https://opensource.org/license/mit"><img src="https://img.shields.io/badge/MIT-green?style=for-the-badge"></a>
-   <a href="https://github.com/jrwnnnn/template-astro"><img src="https://img.shields.io/github/stars/jrwnnnn/template-global?style=for-the-badge"></a> <!-- <---- CHANGE -->
+   <a href="https://github.com/jrwnnnn/re-color"><img src="https://img.shields.io/github/stars/jrwnnnn/re-color?style=for-the-badge"></a>
 </p>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Re:Color is a desktop paint application dedicated to supporting users with color-blindness and color-vision difficulties. It includes live color simulation for different types of color vision (deuteranopia, protanopia, tritanopia), plus tools like a color namer. These bridges the gap for people with color vision deficiency who aspire to see the colors normal visioned people percieve. Built with Electron, Vue.js, and TypeScript. 
 
-## Prerequisites
+## Support
 
-Make sure the following are installed:
-
-- [Node.js](https://nodejs.org/en/download/current)
-
-## Development
-
-```bash
-#Clone the repository
-git clone https://github.com/jrwnnnn/repo.git  <---- CHANGE
-cd block1a
-
-#Install the required dependencies
-npm install
-
-#Run the program
-npm run dev
-```
+If you run into any issues, please [open an issue](https://github.com/jrwnnnn/re-color/issues) and include all relevant details needed to diagnose the problem.
 
 ## License
 
@@ -45,8 +31,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 ## Contributors
 
-<a href="https://github.com/USERNAME/REPO/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=USERNAME/REPO" />
+<a href="https://github.com/jrwnnnn/re-color/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jrwnnnn/re-color" />
 </a>
 
 <br>

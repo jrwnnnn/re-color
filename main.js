@@ -1,6 +1,7 @@
 /* eslint-disable */
-const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path = require("path");
+const fs = require("fs");
 
 function createWindow() {
 	const win = new BrowserWindow({
@@ -23,8 +24,13 @@ function createWindow() {
 			submenu: [
 				{
 					label: "New",
-					accelerator: "CmdOrCtrl+N",
-					click: () => win.webContents.send("menu:new-painting"),
+					accelerator: "Ctrl+N",
+					click: () => win.webContents.send("menu:new-canvas"),
+				},
+				{
+					label: "Export",
+					accelerator: "Ctrl+S",
+					click: () => win.webContents.send("menu:export"),
 				},
 				{ type: "separator" },
 				{ role: "quit" },
@@ -62,3 +68,13 @@ function createWindow() {
 }
 
 app.whenReady().then(createWindow);
+
+ipcMain.handle("save-image", async (_, dataURL) => {
+	const { filePath, canceled } = await dialog.showSaveDialog({
+		defaultPath: "painting.png",
+		filters: [{ name: "PNG Image", extensions: ["png"] }],
+	});
+	if (canceled || !filePath) return;
+	const base64 = dataURL.replace(/^data:image\/png;base64,/, "");
+	fs.writeFileSync(filePath, Buffer.from(base64, "base64"));
+});
