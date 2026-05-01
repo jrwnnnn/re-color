@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
 import { useCanvasStore } from "../stores/useCanvasStore";
 import { useColorStore } from "../stores/useColorStore";
 import { useStage } from "../lib/useStage";
@@ -36,6 +36,14 @@ onMounted(() => {
 
 	window.electronAPI?.onNewPainting(() => newCanvas());
 });
+
+watch(
+	() => colorStore.mode,
+	(mode) => {
+		document.querySelector(".pcr-app")?.setAttribute("data-mode", mode);
+	},
+	{ immediate: true },
+);
 
 onUnmounted(() => destroy());
 </script>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@simonwep/pickr/dist/themes/nano.min.css";
 
 @theme {
 	--color-surface: var(--color-zinc-900);
@@ -16,4 +17,31 @@ body,
 	@apply bg-surface h-full w-full overflow-hidden text-white;
 	font-family: "Segoe UI", system-ui, sans-serif;
 	user-select: none;
+}
+
+.pcr-app {
+	@apply bg-accent filter-none;
+}
+.pcr-app[data-mode="deuteranopia"] {
+	filter: url(#deuteranopia);
+}
+.pcr-app[data-mode="protanopia"] {
+	filter: url(#protanopia);
+}
+.pcr-app[data-mode="tritanopia"] {
+	filter: url(#tritanopia);
+}
+.pcr-palette {
+	@apply rounded-none!;
+}
+.pcr-current-color {
+	@apply border border-white/50;
+}
+.pcr-app .pcr-interaction .pcr-result {
+	@apply bg-surface! text-white/75 ring-0!;
+}
+.pcr-button,
+.pcr-button::before,
+.pcr-button::after {
+	@apply rounded-none! border-white/50 ring-0! hover:scale-105 hover:border-2;
 }
