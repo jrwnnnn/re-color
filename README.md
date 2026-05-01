@@ -1,6 +1,6 @@
-<h1 align="center">Project Name</h1>
+<h1 align="center">Re:Color</h1>
 
-<p align="center"><i>Quick one-liner about what this project does.</i></p>
+<p align="center"><i>A Colorblind-Friendly App.</i></p>
 
 <p align="center">
    <!-- FIND PREMADE BADGES HERE: https://github.com/Ileriayo/markdown-badges -->
@@ -10,8 +10,10 @@
    <a href="https://github.com/jrwnnnn/template-astro"><img src="https://img.shields.io/github/stars/jrwnnnn/template-global?style=for-the-badge"></a> <!-- <---- CHANGE -->
 </p>
 
-Gawa namin nila jieben and jerwin
-Three CS students with no valid future ahead
+This project is solely for the purpose of being an application
+dedicated to users who are, and who do not suffer from color-visual difficulties. Notable, this project will not adhere to any business related queries, due to the fact that this project is solely for the purpose of university purposes, for now.
+
+In the meantime, our team will be diligently offering the application regular updates once this it finally releases.
   
 ## Prerequisites
 
