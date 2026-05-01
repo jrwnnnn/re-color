@@ -1,19 +1,18 @@
 <h1 align="center">Re:Color</h1>
 
-<p align="center"><i>A painting app; recoloring your world.</i></p>
+<p align="center"><i>A paint app for people with color-vision difficulties. </i></p>
 
 <p align="center">
    <!-- FIND PREMADE BADGES HERE: https://github.com/Ileriayo/markdown-badges -->
-   <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-0C1222?style=for-the-badge&logo=astro&logoColor=FDFDFE">
+   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"></a>
+   <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white"></a>
+   <a href="https://vuejs.org"><img src="https://img.shields.io/badge/vue.js-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D"></a>
    <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></a>
    <a href="https://opensource.org/license/mit"><img src="https://img.shields.io/badge/MIT-green?style=for-the-badge"></a>
-   <a href="https://github.com/jrwnnnn/template-astro"><img src="https://img.shields.io/github/stars/jrwnnnn/template-global?style=for-the-badge"></a> <!-- <---- CHANGE -->
+   <a href="https://github.com/jrwnnnn/re-color"><img src="https://img.shields.io/github/stars/jrwnnnn/re-color?style=for-the-badge"></a>
 </p>
 
-**Re:Color** is a dedciated desktop application, serving its purpose for users (e.g. digital artists). This digital canvas has the basic tools necessary for creating works of art, but there is one feature that stands out the most, and that is the application's **color filter** accessibility feature. 
-
-The application's color filter serves as an essential bridge to cover up the gap for people with color vision deficiency who aspire to see the colors normal visioned people percieve. 
-## Prerequisites
+Re:Color is a desktop paint application dedicated to supporting users with color-blindness and color-vision difficulties. It includes live color simulation for different types of color vision (deuteranopia, protanopia, tritanopia), plus tools like a color namer. These bridges the gap for people with color vision deficiency who aspire to see the colors normal visioned people percieve. Built with Electron, Vue.js, and TypeScript. 
 
 ## Support
 
@@ -32,8 +31,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 ## Contributors
 
-<a href="https://github.com/USERNAME/REPO/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=USERNAME/REPO" />
+<a href="https://github.com/jrwnnnn/re-color/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jrwnnnn/re-color" />
 </a>
 
 <br>
