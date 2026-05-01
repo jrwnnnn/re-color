@@ -4,7 +4,7 @@
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
 	"main": "main.js",
-	"version": "1.1.0",
+	"version": "0.2.0",
 	"scripts": {
 		"dev": "concurrently --kill-others \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
@@ -36,6 +36,7 @@
 		}
 	},
 	"dependencies": {
+		"@simonwep/pickr": "^1.9.1",
 		"color-namer": "^1.4.0",
 		"konva": "^9.3.6",
 		"pinia": "^2.1.7",
