@@ -1,6 +1,6 @@
 <h1 align="center">Re:Color</h1>
 
-<p align="center"><i>A Colorblind-Friendly App.</i></p>
+<p align="center"><i>A painting app; recoloring your world.</i></p>
 
 <p align="center">
    <!-- FIND PREMADE BADGES HERE: https://github.com/Ileriayo/markdown-badges -->
@@ -10,11 +10,9 @@
    <a href="https://github.com/jrwnnnn/template-astro"><img src="https://img.shields.io/github/stars/jrwnnnn/template-global?style=for-the-badge"></a> <!-- <---- CHANGE -->
 </p>
 
-This project is solely for the purpose of being an application
-dedicated to users who are, and who do not suffer from color-visual difficulties. Notable, this project will not adhere to any business related queries, due to the fact that this project is solely for the purpose of university purposes, for now.
+**Re:Color** is a dedciated desktop application, serving its purpose for users (e.g. digital artists). This digital canvas has the basic tools necessary for creating works of art, but there is one feature that stands out the most, and that is the application's **color filter** accessibility feature. 
 
-In the meantime, our team will be diligently offering the application regular updates once it finally releases!
-  
+The application's color filter serves as an essential bridge to cover up the gap for people with color vision deficiency who aspire to see the colors normal visioned people percieve. 
 ## Prerequisites
 
 ## Support
