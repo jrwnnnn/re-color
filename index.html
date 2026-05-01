@@ -2,11 +2,49 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>re-color</title>
+		<title>Re:Color</title>
 	</head>
 	<body>
+		<!-- This filter is based of Machado, Gustavo & Oliveira, Manuel & Fernandes, Leandro. (2009). A
+		Physiologically-Based Model for Simulation of Color Vision Deficiency (vol
+		15, pg 1291, 2009). IEEE transactions on visualization and computer
+		graphics. 15. 1291-8. 10.1109/TVCG.2009.113. -->
+		<svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<filter id="deuteranopia">
+					<feColorMatrix
+						type="matrix"
+						values="
+          0.367  0.861 -0.228  0  0
+          0.280  0.673  0.047  0  0
+         -0.012  0.043  0.969  0  0
+          0      0      0      1  0"
+					/>
+				</filter>
+				<filter id="protanopia">
+					<feColorMatrix
+						type="matrix"
+						values="
+          0.152  1.053 -0.205  0  0
+          0.115  0.786  0.099  0  0
+         -0.004 -0.048  1.052  0  0
+          0      0      0      1  0"
+					/>
+				</filter>
+				<filter id="tritanopia">
+					<feColorMatrix
+						type="matrix"
+						values="
+          1.256 -0.077 -0.179  0  0
+         -0.078  0.931  0.148  0  0
+          0.005  0.691  0.304  0  0
+          0      0      0      1  0"
+					/>
+				</filter>
+			</defs>
+		</svg>
+
 		<div id="app"></div>
 		<script type="module" src="/src/main.ts"></script>
 	</body>
