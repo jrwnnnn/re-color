@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import { useCanvasStore } from "../stores/useCanvasStore";
-import { useColorStore } from "../stores/useColorStore";
-import { useStage } from "../lib/useStage";
-import { useTools } from "../lib/useTools";
-import { useKeyboardShortcuts } from "../lib/useKeyboardShortcuts";
-import Toolbar from "../components/ToolBar.vue";
-import ColorBar from "../components/ColorBar.vue";
-import StatusBar from "../components/StatusBar.vue";
+import { useCanvasStore } from "@/stores/useCanvasStore";
+import { useColorStore } from "@/stores/useColorStore";
+import { useStage } from "@/lib/useStage";
+import { useTools } from "@/lib/useTools";
+import { useKeyboardShortcuts } from "@/lib/useKeyboardShortcuts";
+import Toolbar from "@/components/ToolBar.vue";
+import ColorBar from "@/components/ColorBar.vue";
+import StatusBar from "@/components/StatusBar.vue";
 
 const canvasStore = useCanvasStore();
 const colorStore = useColorStore();
