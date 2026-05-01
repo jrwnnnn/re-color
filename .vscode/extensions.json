@@ -1,3 +1,8 @@
 {
-  "recommendations": ["esbenp.prettier-vscode", "astro-build.astro-vscode"]
+	"recommendations": [
+		"Vue.volar",
+		"esbenp.prettier-vscode",
+		"bradlc.vscode-tailwindcss",
+		"yzhang.markdown-all-in-one"
+	]
 }

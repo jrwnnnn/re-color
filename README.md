@@ -17,23 +17,9 @@ In the meantime, our team will be diligently offering the application regular up
   
 ## Prerequisites
 
-Make sure the following are installed:
+## Support
 
-- [Node.js](https://nodejs.org/en/download/current)
-
-## Development
-
-```bash
-#Clone the repository
-git clone https://github.com/jrwnnnn/repo.git  <---- CHANGE
-cd block1a
-
-#Install the required dependencies
-npm install
-
-#Run the program
-npm run dev
-```
+If you run into any issues, please [open an issue](https://github.com/jrwnnnn/re-color/issues) and include all relevant details needed to diagnose the problem.
 
 ## License
 

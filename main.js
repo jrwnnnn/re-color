@@ -1,37 +1,22 @@
-// TODO: Add app icon
+const { app, BrowserWindow } = require("electron");
+const path = require("path");
 
-import { app, BrowserWindow } from "electron";
-import serve from "electron-serve";
-// import path from "path";
-// import { fileURLToPath } from "url";
+function createWindow() {
+	const window = new BrowserWindow({
+		width: 800,
+		height: 600,
+		nodeIntegration: false,
+		contextIsolation: true,
+		webPreferences: {
+			devTools: !app.isPackaged,
+		},
+	});
 
-// const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const loadURL = serve({ directory: "dist" });
-
-let window;
-
-async function createWindow() {
-  window = new BrowserWindow({
-    width: 1280,
-    height: 800,
-    webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      // preload: path.join(__dirname, 'preload.js')
-      devTools: !app.isPackaged,
-    },
-  });
-
-  if (!app.isPackaged) {
-    await window.loadURL("http://localhost:4321");
-    window.webContents.openDevTools();
-  } else {
-    await loadURL(window);
-  }
+	if (!app.isPackaged) {
+		window.loadURL(process.env.VITE_DEV_SERVER_URL);
+	} else {
+		window.loadFile(path.join(__dirname, "dist/index.html"));
+	}
 }
 
 app.whenReady().then(createWindow);
-
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") app.quit();
-});
