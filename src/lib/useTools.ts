@@ -1,6 +1,6 @@
 import Konva from "konva";	
-import type { useCanvasStore } from "../stores/useCanvasStore";
-import type { useColorStore } from "../stores/useColorStore";
+import type { useCanvasStore } from "@/stores/useCanvasStore";
+import type { useColorStore } from "@/stores/useColorStore";
 
 type CanvasStore = ReturnType<typeof useCanvasStore>;
 type ColorStore = ReturnType<typeof useColorStore>;
