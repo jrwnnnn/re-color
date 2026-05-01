@@ -30,7 +30,9 @@
 		},
 		"nsis": {
 			"oneClick": false,
-			"artifactName": "${productName}-v${version}-x64.${ext}"
+			"allowToChangeInstallationDirectory": true,
+			"artifactName": "${productName}-v${version}-x64.${ext}",
+			"license": "LICENSE"
 		}
 	},
 	"dependencies": {
