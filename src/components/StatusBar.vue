@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCanvasStore } from "../stores/useCanvasStore";
-import { useColorStore } from "../stores/useColorStore";
+import { useColorStore, type ColorblindMode } from "../stores/useColorStore";
 
 const canvasStore = useCanvasStore();
 const colorStore = useColorStore();
@@ -18,11 +18,38 @@ const colorStore = useColorStore();
 			<p>{{ colorStore.colorName }}</p>
 		</div>
 
-		<div v-if="canvasStore.cursorPos" class="flex items-center gap-1 font-mono">
-			<p>X:</p>
-			<p>{{ canvasStore.cursorPos.x }}</p>
-			<p class="ml-1.5">Y:</p>
-			<p>{{ canvasStore.cursorPos.y }}</p>
+		<div class="flex items-center gap-2">
+			<div
+				v-if="canvasStore.cursorPos"
+				class="flex items-center gap-1 font-mono"
+			>
+				<p>X:</p>
+				<p>{{ canvasStore.cursorPos.x }}</p>
+				<p class="ml-1.5">Y:</p>
+				<p>{{ canvasStore.cursorPos.y }}</p>
+			</div>
+			<select
+				:value="colorStore.mode"
+				@change="
+					colorStore.setMode(
+						($event.target as HTMLSelectElement).value as ColorblindMode,
+					)
+				"
+				class="text-xxs cursor-pointer font-semibold tracking-wide outline-none"
+			>
+				<option class="bg-panel text-white" value="normal">
+					Normal Vision
+				</option>
+				<option class="bg-panel text-white" value="deuteranopia">
+					Deuteranopia
+				</option>
+				<option class="bg-panel text-white" value="protanopia">
+					Protanopia
+				</option>
+				<option class="bg-panel text-white" value="tritanopia">
+					Tritanopia
+				</option>
+			</select>
 		</div>
 	</div>
 </template>

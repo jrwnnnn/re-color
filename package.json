@@ -37,6 +37,7 @@
 		}
 	},
 	"dependencies": {
+		"@simonwep/pickr": "^1.9.1",
 		"color-namer": "^1.4.0",
 		"konva": "^9.3.6",
 		"pinia": "^2.1.7",

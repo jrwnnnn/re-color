@@ -1,36 +1,72 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted, watch, ref } from "vue";
 import { useColorStore, PALETTE } from "../stores/useColorStore";
+import Pickr from "@simonwep/pickr";
 import colorNamer from "color-namer";
+
 const colorStore = useColorStore();
+
+const pickrRef = ref<HTMLDivElement>();
+let pickr: Pickr | null = null;
+
+onMounted(() => {
+	pickr = Pickr.create({
+		el: pickrRef.value!,
+		theme: "nano",
+		default: colorStore.activeColor,
+		components: {
+			preview: true,
+			hue: true,
+			interaction: {
+				hex: false,
+				input: true,
+				save: false,
+			},
+		},
+	});
+
+	pickr.on("change", (color: Pickr.HSVaColor) => {
+		const hex = color.toHEXA().toString().slice(0, 7);
+		colorStore.setColor(hex);
+		pickr?.applyColor();
+	});
+});
+
+watch(
+	() => colorStore.activeColor,
+	(hex) => {
+		pickr!.setColor(hex);
+	},
+);
+
+onUnmounted(() => pickr?.destroyAndRemove());
 </script>
 
 <template>
 	<div
-		class="bg-panel border-accent flex items-center gap-2.5 border-t  py-1 px-2"
+		class="bg-panel border-accent flex items-center gap-2.5 border-t px-2 py-1"
 	>
-		<input
-			id="custom-color-picker"
-			title="Custom Color Picker"
-			type="color"
-			:value="colorStore.activeColor"
-			@input="colorStore.setColor(($event.target as HTMLInputElement).value)"
-			class="h-10 w-10 cursor-pointer"
-		/>
+		<div
+			class="flex items-center gap-2.5"
+			:style="{ filter: colorStore.cssFilter }"
+		>
+			<div ref="pickrRef"></div>
 
-		<div class="flex flex-wrap items-center gap-1">
-			<button
-				v-for="color in PALETTE"
-				:key="color.hex"
-				@click="colorStore.setColor(color.hex)"
-				:title="colorNamer(color.hex).ntc[0].name + ' (' + color.hex + ')'"
-				:class="[
-					'h-6 w-6 cursor-pointer border-2 transition-all duration-100',
-					colorStore.activeColor.toLowerCase() === color.hex.toLowerCase()
-						? 'border-highlight scale-110'
-						: 'border-transparent hover:scale-110 hover:border-white/40',
-				]"
-				:style="{ background: color.hex }"
-			></button>
+			<div id="swatch-bar" class="flex flex-wrap items-center gap-1">
+				<button
+					v-for="color in PALETTE"
+					:key="color.hex"
+					@click="colorStore.setColor(color.hex)"
+					:title="colorNamer(color.hex).ntc[0].name + ' (' + color.hex + ')'"
+					:class="[
+						'h-6 w-6 cursor-pointer border-2 transition-all duration-100',
+						colorStore.activeColor.toLowerCase() === color.hex.toLowerCase()
+							? 'scale-105 border-white/50'
+							: 'border-transparent hover:scale-105 hover:border-white/40',
+					]"
+					:style="{ background: color.hex }"
+				></button>
+			</div>
 		</div>
 	</div>
 </template>
