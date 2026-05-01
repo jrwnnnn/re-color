@@ -2,5 +2,7 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-	onNewPainting: (callback) => ipcRenderer.on("menu:new-painting", callback),
+	onNewCanvas: (callback) => ipcRenderer.on("menu:new-canvas", callback),
+	onExport: (callback) => ipcRenderer.on("menu:export", callback),
+	saveImage: (dataURL) => ipcRenderer.invoke("save-image", dataURL),
 });
