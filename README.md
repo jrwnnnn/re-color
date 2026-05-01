@@ -13,7 +13,7 @@
 This project is solely for the purpose of being an application
 dedicated to users who are, and who do not suffer from color-visual difficulties. Notable, this project will not adhere to any business related queries, due to the fact that this project is solely for the purpose of university purposes, for now.
 
-In the meantime, our team will be diligently offering the application regular updates once this it finally releases.
+In the meantime, our team will be diligently offering the application regular updates once it finally releases!
   
 ## Prerequisites
 
