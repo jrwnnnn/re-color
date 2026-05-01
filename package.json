@@ -32,6 +32,10 @@
 			"oneClick": false,
 			"allowToChangeInstallationDirectory": true,
 			"artifactName": "${productName}-v${version}-x64.${ext}",
+			"installerIcon": "build/icon.ico",
+			"installerSidebar": "build/sidebar.bmp",
+			"uninstallerIcon": "build/icon.ico",
+			"uninstallerSidebar": "build/sidebar.bmp",
 			"license": "LICENSE"
 		}
 	},
