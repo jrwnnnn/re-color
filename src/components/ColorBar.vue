@@ -5,6 +5,10 @@ import Pickr from "@simonwep/pickr";
 import colorNamer from "color-namer";
 
 const colorStore = useColorStore();
+const paletteNamed = PALETTE.map((p) => ({
+	...p,
+	name: colorNamer(p.hex).ntc[0].name,
+}));
 
 const pickrRef = ref<HTMLDivElement>();
 let pickr: Pickr | null = null;
@@ -54,10 +58,10 @@ onUnmounted(() => pickr?.destroyAndRemove());
 
 			<div id="swatch-bar" class="flex flex-wrap items-center gap-1">
 				<button
-					v-for="color in PALETTE"
+					v-for="color in paletteNamed"
 					:key="color.hex"
 					@click="colorStore.setColor(color.hex)"
-					:title="colorNamer(color.hex).ntc[0].name + ' (' + color.hex + ')'"
+					:title="`${color.name} (${color.hex})`"
 					:class="[
 						'h-6 w-6 cursor-pointer border-2 transition-all duration-100',
 						colorStore.activeColor.toLowerCase() === color.hex.toLowerCase()
