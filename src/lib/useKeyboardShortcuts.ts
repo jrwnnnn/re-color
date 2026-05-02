@@ -1,4 +1,4 @@
-import type { useCanvasStore } from "../stores/useCanvasStore";
+import type { useCanvasStore } from "@/stores/useCanvasStore";
 
 type CanvasStore = ReturnType<typeof useCanvasStore>;
 
