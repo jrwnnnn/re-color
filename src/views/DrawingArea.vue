@@ -3,6 +3,8 @@ import { ref, onMounted, onUnmounted, watch } from "vue";
 import { useCanvasStore } from "@/stores/useCanvasStore";
 import { useColorStore } from "@/stores/useColorStore";
 import { useStage } from "@/lib/useStage";
+import { useHistory } from "@/lib/useHistory";
+import { useCanvas } from "@/lib/useCanvas";
 import { useTools } from "@/lib/useTools";
 import { useKeyboardShortcuts } from "@/lib/useKeyboardShortcuts";
 import Toolbar from "@/components/ToolBar.vue";
@@ -15,18 +17,9 @@ const colorStore = useColorStore();
 const rootRef = ref<HTMLDivElement>();
 const containerRef = ref<HTMLDivElement>();
 
-const {
-	saveSnapshot,
-	undo,
-	redo,
-	init,
-	destroy,
-	getPos,
-	newCanvas,
-	exportCanvas,
-	getStage,
-	getDrawLayer,
-} = useStage(containerRef);
+const { init, destroy, getPos, getStage, getDrawLayer } = useStage(containerRef);
+const { saveSnapshot, undo, redo, clearHistory } = useHistory(getDrawLayer);
+const { newCanvas, exportCanvas } = useCanvas(getStage, getDrawLayer, clearHistory, containerRef);
 
 const { handleMouseDown, handleMouseMove, handleMouseUp } = useTools(
 	getDrawLayer,
