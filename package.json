@@ -1,6 +1,6 @@
 {
 	"name": "re-color",
-	"description": "Hello World!",
+	"description": "A paint app for people with color-vision difficulties.",
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
 	"main": "main.js",
