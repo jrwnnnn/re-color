@@ -1,10 +1,10 @@
 {
 	"name": "re-color",
-	"description": "Hello World!",
+	"description": "A paint app for people with color-vision difficulties.",
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
 	"main": "main.js",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"scripts": {
 		"dev": "concurrently --kill-others \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
@@ -32,6 +32,10 @@
 			"oneClick": false,
 			"allowToChangeInstallationDirectory": true,
 			"artifactName": "${productName}-v${version}-x64.${ext}",
+			"installerIcon": "build/icon.ico",
+			"installerSidebar": "build/sidebar.bmp",
+			"uninstallerIcon": "build/icon.ico",
+			"uninstallerSidebar": "build/sidebar.bmp",
 			"license": "LICENSE"
 		}
 	},
