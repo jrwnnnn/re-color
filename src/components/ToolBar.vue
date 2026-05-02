@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useCanvasStore, type Tool } from "../stores/useCanvasStore";
+import { useCanvasStore, type Tool } from "@/stores/useCanvasStore";
 import type { Component } from "vue";
-import BrushIcon from "../assets/brush-tool.svg?component";
-import EraserIcon from "../assets/eraser-tool.svg?component";
-import LineIcon from "../assets/line-tool.svg?component";
-import RectIcon from "../assets/rect-tool.svg?component";
-import CircleIcon from "../assets/circle-tool.svg?component";
+import BrushIcon from "@/assets/brush-tool.svg?component";
+import EraserIcon from "@/assets/eraser-tool.svg?component";
+import LineIcon from "@/assets/line-tool.svg?component";
+import RectIcon from "@/assets/rect-tool.svg?component";
+import CircleIcon from "@/assets/circle-tool.svg?component";
 
 const store = useCanvasStore();
 
