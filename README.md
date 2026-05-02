@@ -1,3 +1,8 @@
+<div align="center">
+  <img src=".github/icon.png" width="100" height="100">
+</div>
+
+
 <h1 align="center">Re:Color</h1>
 
 <p align="center"><i>A paint app for people with color-vision difficulties. </i></p>
@@ -14,6 +19,10 @@
 
 Re:Color is a desktop paint application dedicated to supporting users with color-blindness and color-vision difficulties. It includes live color simulation for different types of color vision (deuteranopia, protanopia, tritanopia), plus tools like a color namer. These bridges the gap for people with color vision deficiency who aspire to see the colors normal visioned people percieve. Built with Electron, Vue.js, and TypeScript. 
 
+<br>
+
+<img src=".github/screenshot.png">
+
 ## Support
 
 If you run into any issues, please [open an issue](https://github.com/jrwnnnn/re-color/issues) and include all relevant details needed to diagnose the problem.
@@ -21,7 +30,7 @@ If you run into any issues, please [open an issue](https://github.com/jrwnnnn/re
 ## License
 
 Distributed under the MIT License.
-Copyright (c) 2025 Mark Jerwin(@jrwnnnn). All rights reserved.
+Copyright (c) 2026 Mark Jerwin(@jrwnnnn). All rights reserved.
 
 See the See the [LICENSE](LICENSE) file for full details.
 
@@ -35,6 +44,7 @@ The above copyright notice and this permission notice shall be included in all c
   <img src="https://contrib.rocks/image?repo=jrwnnnn/re-color" />
 </a>
 
+<br>
 <br>
 
 <img src="https://forthebadge.com/images/badges/built-with-love.svg">
