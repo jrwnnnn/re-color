@@ -16,6 +16,30 @@ export function useStage(
 	// This layer is where all user strokes live.
 	let drawLayer: Konva.Layer;
 
+	const undoStack: Konva.Node[] = [];
+	const redoStack: Konva.Node[] = [];
+
+	function saveSnapshot(node: Konva.Node) {
+		undoStack.push(node);
+		redoStack.length = 0;
+	}
+
+	function undo() {
+		const node = undoStack.pop();
+		if (!node) return;
+		node.remove();
+		redoStack.push(node);
+		drawLayer.batchDraw();
+	}
+
+	function redo() {
+		const node = redoStack.pop();
+		if (!node) return;
+		drawLayer.add(node as Konva.Shape);
+		undoStack.push(node);
+		drawLayer.batchDraw();
+	}
+
 	// Creates the stage, adds the white background, adds the drawing layer,
 	// then calls fitToViewport so the canvas starts centered and scaled to fit the window.
 	function init() {
@@ -127,6 +151,8 @@ export function useStage(
 			return;
 		drawLayer.destroyChildren();
 		drawLayer.batchDraw();
+		undoStack.length = 0;
+		redoStack.length = 0;
 
 		const { width, height } = containerRef.value!.getBoundingClientRect();
 		fitToViewport(width, height);
@@ -158,6 +184,9 @@ export function useStage(
 	}
 
 	return {
+		saveSnapshot,
+		undo,
+		redo,
 		init,
 		destroy,
 		getPos,
