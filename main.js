@@ -37,6 +37,21 @@ function createWindow() {
 			],
 		},
 		{
+			label: "Edit",
+			submenu: [
+				{
+					label: "Undo",
+					accelerator: "Ctrl+Z",
+					click: () => win.webContents.send("menu:undo"),
+				},
+				{
+					label: "Redo",
+					accelerator: "Ctrl+Y",
+					click: () => win.webContents.send("menu:redo"),
+				},
+			],
+		},
+		{
 			label: "View",
 			submenu: [
 				{ role: "reload" },

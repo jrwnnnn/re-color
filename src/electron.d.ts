@@ -3,6 +3,7 @@ interface Window {
 		onNewCanvas: (callback: () => void) => void;
 		onExport: (callback: () => void) => void;
 		saveImage: (dataURL: string) => Promise<void>;
-		onSetMode: (callback: (mode: string) => void) => void;
+		onUndo: (callback: () => void) => void;
+		onRedo: (callback: () => void) => void;
 	};
 }
