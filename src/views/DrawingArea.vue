@@ -15,13 +15,25 @@ const colorStore = useColorStore();
 const rootRef = ref<HTMLDivElement>();
 const containerRef = ref<HTMLDivElement>();
 
-const { init, destroy, getPos, newCanvas, exportCanvas, getStage, getDrawLayer } =
-	useStage(containerRef);
+const {
+	saveSnapshot,
+	undo,
+	redo,
+	init,
+	destroy,
+	getPos,
+	newCanvas,
+	exportCanvas,
+	getStage,
+	getDrawLayer,
+} = useStage(containerRef);
+
 const { handleMouseDown, handleMouseMove, handleMouseUp } = useTools(
 	getDrawLayer,
 	getPos,
 	canvasStore,
 	colorStore,
+	saveSnapshot,
 );
 const { onKeyDown } = useKeyboardShortcuts(canvasStore);
 
@@ -33,6 +45,9 @@ onMounted(() => {
 	stage.on("mousedown touchstart", handleMouseDown);
 	stage.on("mousemove touchmove", handleMouseMove);
 	stage.on("mouseup touchend", handleMouseUp);
+
+	window.electronAPI?.onUndo(() => undo());
+	window.electronAPI?.onRedo(() => redo());
 
 	window.electronAPI?.onNewCanvas(() => newCanvas());
 	window.electronAPI?.onExport(async () => {

@@ -1,4 +1,4 @@
-import Konva from "konva";	
+import Konva from "konva";
 import type { useCanvasStore } from "@/stores/useCanvasStore";
 import type { useColorStore } from "@/stores/useColorStore";
 
@@ -10,6 +10,7 @@ export function useTools(
 	getPos: () => { x: number; y: number },
 	canvasStore: CanvasStore,
 	colorStore: ColorStore,
+	saveSnapshot: (node: Konva.Node) => void,
 ) {
 	let isDrawing = false;
 	let currentShape: Konva.Line | Konva.Rect | Konva.Ellipse | null = null;
@@ -120,6 +121,7 @@ export function useTools(
 	}
 
 	function handleMouseUp() {
+		if (isDrawing && currentShape) saveSnapshot(currentShape);
 		isDrawing = false;
 		currentShape = null;
 		startPos = null;
