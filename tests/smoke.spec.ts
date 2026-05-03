@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
-async function getCanvas(page: Page) {
-	await page.waitForSelector("canvas");
-	const canvas = page.locator("canvas").first();
-	const box = await canvas.boundingBox();
-	if (!box) throw new Error("canvas not found");
-	return box;
-}
+// async function getCanvas(page: Page) {
+// 	await page.waitForSelector("canvas");
+// 	const canvas = page.locator("canvas").first();
+// 	const box = await canvas.boundingBox();
+// 	if (!box) throw new Error("canvas not found");
+// 	return box;
+// }
 
 // This test ensures that the app loads without errors and that the main container is rendered.
 test("app loads", async ({ page }) => {
