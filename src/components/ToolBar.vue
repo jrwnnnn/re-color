@@ -9,38 +9,39 @@ import CircleIcon from "@/assets/circle-tool.svg?component";
 
 const store = useCanvasStore();
 
-const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] = [
-	{
-		id: "brush",
-		label: "Brush",
-		shortcut: "B",
-		icon: BrushIcon,
-	},
-	{
-		id: "eraser",
-		label: "Eraser",
-		shortcut: "E",
-		icon: EraserIcon,
-	},
-	{
-		id: "line",
-		label: "Line",
-		shortcut: "L",
-		icon: LineIcon,
-	},
-	{
-		id: "rect",
-		label: "Rect",
-		shortcut: "R",
-		icon: RectIcon,
-	},
-	{
-		id: "circle",
-		label: "Circle",
-		shortcut: "C",
-		icon: CircleIcon,
-	},
-];
+const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
+	[
+		{
+			id: "brush",
+			label: "Brush",
+			shortcut: "B",
+			icon: BrushIcon,
+		},
+		{
+			id: "eraser",
+			label: "Eraser",
+			shortcut: "E",
+			icon: EraserIcon,
+		},
+		{
+			id: "line",
+			label: "Line",
+			shortcut: "L",
+			icon: LineIcon,
+		},
+		{
+			id: "rect",
+			label: "Rect",
+			shortcut: "R",
+			icon: RectIcon,
+		},
+		{
+			id: "circle",
+			label: "Circle",
+			shortcut: "C",
+			icon: CircleIcon,
+		},
+	];
 </script>
 
 <template>
@@ -59,6 +60,7 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] = 
 						? 'text-white'
 						: 'text-muted hover:bg-accent hover:text-white',
 				]"
+				:data-testid="tool.id"
 			>
 				<component :is="tool.icon" class="h-4.5 w-4.5" />
 				<span class="text-[9px] font-medium tracking-wide">{{
