@@ -21,7 +21,7 @@ const colorStore = useColorStore();
 		<div class="flex items-center gap-2">
 			<div
 				v-if="canvasStore.cursorPos"
-				class="flex items-center gap-1 font-mono"
+				class="flex items-center gap-1"
 			>
 				<p>X:</p>
 				<p>{{ canvasStore.cursorPos.x }}</p>

@@ -46,7 +46,7 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 
 <template>
 	<div
-		class="bg-panel border-accent flex flex-col items-center gap-2 overflow-y-auto border-r p-1"
+		class="bg-panel border-accent flex flex-col items-center gap-2 overflow-y-auto border-r p-1 py-2"
 	>
 		<div class="flex w-full flex-col items-center gap-1">
 			<button
@@ -58,7 +58,7 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 					'flex w-full cursor-pointer flex-col items-center gap-1 rounded-sm p-1 transition-all duration-150',
 					store.activeTool === tool.id
 						? 'text-white'
-						: 'text-muted hover:bg-accent hover:text-white',
+						: 'text-muted hover:text-white',
 				]"
 				:data-testid="tool.id"
 			>
