@@ -20,7 +20,7 @@ jobs:
         run: npm ci
       
       - name: Perform linting
-      - run: npm run lint
+        run: npm run lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Perform typechecking
-      - run: npm run typecheck
+        run: npm run typecheck
 
   smoke test:
     needs: [lint, typecheck]
