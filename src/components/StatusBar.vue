@@ -36,6 +36,7 @@ const colorStore = useColorStore();
 					)
 				"
 				class="text-xxs cursor-pointer font-semibold tracking-wide outline-none"
+				data-testid="colormode-select"
 			>
 				<option class="bg-panel text-white" value="normal">
 					Normal Vision
