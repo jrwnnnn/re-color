@@ -73,8 +73,7 @@ jobs:
         run: npm ci
 
       - name: Run smoketest
-        run: npx playwright install
-        run: npm run smoketest
+        run: npx playwright install && npm run smoketest
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
