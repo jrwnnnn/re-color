@@ -1,9 +1,32 @@
 <script setup lang="ts">
+import { watch } from "vue";
 import { useCanvasStore } from "@/stores/useCanvasStore";
 import { useColorStore, type ColorblindMode } from "@/stores/useColorStore";
+import { usePaywallStore } from "@/stores/usePaywallStore";
 
 const canvasStore = useCanvasStore();
 const colorStore = useColorStore();
+const paywallStore = usePaywallStore();
+
+function handleModeChange(value: string) {
+	if (paywallStore.isModeLocked(value)) {
+		paywallStore.triggerNag("Color mode locked. Upgrade to Pro.");
+		paywallStore.openLightbox("Color mode");
+		colorStore.setMode("deuteranopia");
+		return;
+	}
+	colorStore.setMode(value as ColorblindMode);
+}
+
+watch(
+	() => colorStore.mode,
+	(mode) => {
+		if (paywallStore.isModeLocked(mode)) {
+			colorStore.setMode("deuteranopia");
+		}
+	},
+	{ immediate: true },
+);
 </script>
 
 <template>
@@ -19,10 +42,7 @@ const colorStore = useColorStore();
 		</div>
 
 		<div class="flex items-center gap-2">
-			<div
-				v-if="canvasStore.cursorPos"
-				class="flex items-center gap-1"
-			>
+			<div v-if="canvasStore.cursorPos" class="flex items-center gap-1">
 				<p>X:</p>
 				<p>{{ canvasStore.cursorPos.x }}</p>
 				<p class="ml-1.5">Y:</p>
@@ -30,25 +50,33 @@ const colorStore = useColorStore();
 			</div>
 			<select
 				:value="colorStore.mode"
-				@change="
-					colorStore.setMode(
-						($event.target as HTMLSelectElement).value as ColorblindMode,
-					)
-				"
+				@change="handleModeChange(($event.target as HTMLSelectElement).value)"
 				class="text-xxs cursor-pointer font-semibold tracking-wide outline-none"
 				data-testid="colormode-select"
 			>
-				<option class="bg-panel text-white" value="normal">
-					Normal Vision
+				<option
+					class="bg-panel text-white"
+					value="normal"
+					:disabled="paywallStore.isModeLocked('normal')"
+				>
+					Normal Vision (Pro)
 				</option>
 				<option class="bg-panel text-white" value="deuteranopia">
 					Deuteranopia
 				</option>
-				<option class="bg-panel text-white" value="protanopia">
-					Protanopia
+				<option
+					class="bg-panel text-white"
+					value="protanopia"
+					:disabled="paywallStore.isModeLocked('protanopia')"
+				>
+					Protanopia (Pro)
 				</option>
-				<option class="bg-panel text-white" value="tritanopia">
-					Tritanopia
+				<option
+					class="bg-panel text-white"
+					value="tritanopia"
+					:disabled="paywallStore.isModeLocked('tritanopia')"
+				>
+					Tritanopia (Pro)
 				</option>
 			</select>
 		</div>

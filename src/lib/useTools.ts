@@ -1,15 +1,18 @@
 import Konva from "konva";
 import type { useCanvasStore } from "@/stores/useCanvasStore";
 import type { useColorStore } from "@/stores/useColorStore";
+import type { usePaywallStore } from "@/stores/usePaywallStore";
 
 type CanvasStore = ReturnType<typeof useCanvasStore>;
 type ColorStore = ReturnType<typeof useColorStore>;
+type PaywallStore = ReturnType<typeof usePaywallStore>;
 
 export function useTools(
 	getDrawLayer: () => Konva.Layer,
 	getPos: () => { x: number; y: number },
 	canvasStore: CanvasStore,
 	colorStore: ColorStore,
+	paywallStore: PaywallStore,
 	saveSnapshot: (node: Konva.Node) => void,
 ) {
 	let isDrawing = false;
@@ -22,6 +25,8 @@ export function useTools(
 		const color = colorStore.activeColor;
 		const size = canvasStore.brushSize;
 		const drawLayer = getDrawLayer();
+
+		if (tool === "eraser" && !paywallStore.startEraserUse()) return;
 
 		isDrawing = true;
 		startPos = pos;
@@ -83,6 +88,7 @@ export function useTools(
 		if (!isDrawing || !currentShape) return;
 
 		const tool = canvasStore.activeTool;
+		if (tool === "eraser" && paywallStore.isEraserLocked) return;
 
 		if (tool === "brush" || tool === "eraser") {
 			(currentShape as Konva.Line).points([
@@ -125,6 +131,9 @@ export function useTools(
 		isDrawing = false;
 		currentShape = null;
 		startPos = null;
+		if (canvasStore.activeTool === "eraser") {
+			paywallStore.stopEraserUse();
+		}
 	}
 
 	return { handleMouseDown, handleMouseMove, handleMouseUp };

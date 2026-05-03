@@ -5,5 +5,6 @@ interface Window {
 		saveImage: (dataURL: string) => Promise<void>;
 		onUndo: (callback: () => void) => void;
 		onRedo: (callback: () => void) => void;
+		listAds: () => Promise<string[]>;
 	};
 }

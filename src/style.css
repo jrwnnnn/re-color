@@ -54,3 +54,302 @@ body,
 .pcr-button::after {
 	@apply rounded-none! border-white/50 ring-0! hover:scale-105 hover:border-2;
 }
+
+.annoy-banner {
+	background: linear-gradient(
+		90deg,
+		rgba(30, 41, 59, 0.92),
+		rgba(14, 165, 233, 0.85),
+		rgba(30, 41, 59, 0.92)
+	);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.annoy-shop,
+.annoy-paywall,
+.annoy-popup,
+.annoy-streak,
+.annoy-nudge,
+.annoy-payment,
+.annoy-nag {
+	background: rgba(12, 12, 12, 0.85);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+	backdrop-filter: blur(6px);
+}
+
+.annoy-lightbox {
+	background: rgba(5, 5, 5, 0.75);
+	backdrop-filter: blur(2px);
+}
+
+.annoy-paywall-modal {
+	border: 1px solid rgba(250, 204, 21, 0.45);
+	box-shadow:
+		0 14px 28px rgba(0, 0, 0, 0.65),
+		0 0 12px rgba(250, 204, 21, 0.25);
+}
+
+.annoy-nag {
+	background: rgba(245, 158, 11, 0.9);
+	color: #111827;
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+.annoy-pill {
+	background: #f97316;
+	color: #120f0b;
+}
+
+.annoy-btn {
+	background: #22c55e;
+	color: #08140b;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-weight: 600;
+}
+
+.annoy-btn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.annoy-btn-secondary {
+	background: #fde047;
+	color: #111827;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-weight: 600;
+}
+
+.annoy-btn-secondary:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.annoy-link {
+	background: transparent;
+	border: none;
+	color: #fbbf24;
+	text-decoration: underline;
+	padding: 0;
+	cursor: pointer;
+}
+
+.annoy-input {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 4px;
+	padding: 6px 8px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.annoy-link:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	text-decoration: none;
+}
+
+.annoy-tile {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 4px;
+	padding: 6px 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	text-align: left;
+}
+
+.annoy-input:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.annoy-lock-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(12, 12, 12, 0.75);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: #fbbf24;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.annoy-lock-label {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	color: #facc15;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	pointer-events: none;
+}
+
+.annoy-tool-badge {
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+	background: #f97316;
+	color: #120f0b;
+	font-size: 8px;
+	padding: 1px 3px;
+	border-radius: 3px;
+}
+
+.annoy-tool-timer {
+	font-size: 8px;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.annoy-coin-burst {
+	margin-top: 4px;
+	color: #22c55e;
+	font-size: 10px;
+	font-weight: 600;
+	animation: annoy-pop 0.4s ease-out;
+}
+
+.annoy-ad-backdrop {
+	background: rgba(5, 5, 5, 0.16);
+}
+
+.annoy-ad-dock {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 50;
+	@apply bg-panel;
+	border-top: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 -12px 24px rgba(0, 0, 0, 0.55);
+	border-radius: 0;
+	overflow: hidden;
+}
+
+.annoy-ad-close {
+	width: 24px;
+	height: 24px;
+	border: none;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.86);
+	color: #111827;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.annoy-ad-frame {
+	height: clamp(72px, 12vh, 124px);
+	padding: 0 12px 10px;
+}
+
+.annoy-ad-empty {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 2px;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 11px;
+	text-align: center;
+}
+
+.annoy-ad-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+
+.annoy-badge {
+	background: #0ea5e9;
+	color: #061018;
+}
+
+.annoy-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.annoy-dot.active {
+	background: #22c55e;
+	box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+}
+
+.annoy-pop {
+	animation: annoy-pop 0.5s ease-out;
+}
+
+.annoy-wiggle {
+	animation: annoy-wiggle 1.1s ease-in-out infinite;
+}
+
+.annoy-float {
+	animation: annoy-float 2.8s ease-in-out infinite;
+}
+
+.annoy-pulse {
+	animation: annoy-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes annoy-pop {
+	from {
+		transform: scale(0.98);
+		opacity: 0.85;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes annoy-wiggle {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(2px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes annoy-float {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-4px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes annoy-pulse {
+	0% {
+		box-shadow: 0 0 0 rgba(250, 204, 21, 0.4);
+	}
+	70% {
+		box-shadow: 0 0 14px rgba(250, 204, 21, 0.65);
+	}
+	100% {
+		box-shadow: 0 0 0 rgba(250, 204, 21, 0.4);
+	}
+}

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCanvasStore, type Tool } from "@/stores/useCanvasStore";
+import { usePaywallStore } from "@/stores/usePaywallStore";
 import type { Component } from "vue";
 import BrushIcon from "@/assets/brush-tool.svg?component";
 import EraserIcon from "@/assets/eraser-tool.svg?component";
@@ -8,6 +9,7 @@ import RectIcon from "@/assets/rect-tool.svg?component";
 import CircleIcon from "@/assets/circle-tool.svg?component";
 
 const store = useCanvasStore();
+const paywallStore = usePaywallStore();
 
 const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 	[
@@ -42,6 +44,15 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 			icon: CircleIcon,
 		},
 	];
+
+function handleToolClick(toolId: Tool) {
+	if (paywallStore.isToolLocked(toolId)) {
+		paywallStore.triggerNag("Tool locked. Upgrade to Pro to draw more.");
+		paywallStore.openLightbox("Premium tool");
+		return;
+	}
+	store.setTool(toolId);
+}
 </script>
 
 <template>
@@ -52,11 +63,17 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 			<button
 				v-for="tool in tools"
 				:key="tool.id"
-				@click="store.setTool(tool.id)"
+				@click="handleToolClick(tool.id)"
 				:title="`${tool.label} (${tool.shortcut})`"
 				:class="[
-					'flex w-full cursor-pointer flex-col items-center gap-1 rounded-sm p-1 transition-all duration-150',
-					store.activeTool === tool.id
+					'relative flex w-full flex-col items-center gap-1 rounded-sm p-1 transition-all duration-150',
+					paywallStore.isToolLocked(tool.id)
+						? 'text-muted cursor-not-allowed opacity-60'
+						: 'cursor-pointer',
+					tool.id === 'eraser' && paywallStore.isEraserLocked
+						? 'opacity-70'
+						: '',
+					store.activeTool === tool.id && !paywallStore.isToolLocked(tool.id)
 						? 'text-white'
 						: 'text-muted hover:text-white',
 				]"
@@ -66,6 +83,18 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 				<span class="text-[9px] font-medium tracking-wide">{{
 					tool.label
 				}}</span>
+				<span
+					v-if="tool.id === 'eraser' && paywallStore.isEraserLocked"
+					class="annoy-tool-timer"
+				>
+					Wait {{ paywallStore.eraserCooldownRemaining }}s
+				</span>
+				<span
+					v-if="paywallStore.isToolLocked(tool.id)"
+					class="annoy-tool-badge"
+				>
+					PRO
+				</span>
 			</button>
 		</div>
 

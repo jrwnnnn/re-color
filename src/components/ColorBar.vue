@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch, ref } from "vue";
 import { useColorStore, PALETTE } from "@/stores/useColorStore";
+import { usePaywallStore } from "@/stores/usePaywallStore";
 import Pickr from "@simonwep/pickr";
 import colorNamer from "color-namer";
 
 const colorStore = useColorStore();
+const paywallStore = usePaywallStore();
 const paletteNamed = PALETTE.map((p) => ({
 	...p,
 	name: colorNamer(p.hex).ntc[0].name,
@@ -12,6 +14,7 @@ const paletteNamed = PALETTE.map((p) => ({
 
 const pickrRef = ref<HTMLDivElement>();
 let pickr: Pickr | null = null;
+let ignorePickrChange = false;
 
 onMounted(() => {
 	pickr = Pickr.create({
@@ -30,6 +33,21 @@ onMounted(() => {
 	});
 
 	pickr.on("change", (color: Pickr.HSVaColor) => {
+		if (ignorePickrChange) {
+			ignorePickrChange = false;
+			return;
+		}
+		if (paywallStore.isPickerLocked) {
+			paywallStore.triggerNag("Custom color picker is Pro-only.");
+			paywallStore.openLightbox("Custom color picker");
+			ignorePickrChange = true;
+			pickr?.setColor(colorStore.activeColor);
+			pickr?.applyColor();
+			window.setTimeout(() => {
+				ignorePickrChange = false;
+			}, 0);
+			return;
+		}
 		const hex = color.toHEXA().toString().slice(0, 7);
 		colorStore.setColor(hex);
 		pickr?.applyColor();
@@ -43,6 +61,15 @@ watch(
 	},
 );
 
+function handleSwatchClick(hex: string, index: number) {
+	if (paywallStore.isSwatchLocked(index)) {
+		paywallStore.triggerNag("Premium swatches require Pro.");
+		paywallStore.openLightbox("Premium swatch");
+		return;
+	}
+	colorStore.setColor(hex);
+}
+
 onUnmounted(() => pickr?.destroyAndRemove());
 </script>
 
@@ -54,22 +81,41 @@ onUnmounted(() => pickr?.destroyAndRemove());
 			class="flex items-center gap-2.5"
 			:style="{ filter: colorStore.cssFilter }"
 		>
-			<div ref="pickrRef"></div>
+			<div class="relative">
+				<div ref="pickrRef"></div>
+				<button
+					v-if="paywallStore.isPickerLocked"
+					class="annoy-lock-overlay"
+					@click="paywallStore.triggerNag('Custom color picker is Pro-only.')"
+				>
+					PRO
+				</button>
+			</div>
 
 			<div id="swatch-bar" class="flex flex-wrap items-center gap-1">
 				<button
-					v-for="color in paletteNamed"
+					v-for="(color, index) in paletteNamed"
 					:key="color.hex"
-					@click="colorStore.setColor(color.hex)"
+					@click="handleSwatchClick(color.hex, index)"
 					:title="`${color.name} (${color.hex})`"
 					:class="[
-						'h-6 w-6 cursor-pointer border-2 transition-all duration-100',
+						'relative h-6 w-6 overflow-hidden border-2 transition-all duration-100',
+						paywallStore.isSwatchLocked(index)
+							? 'cursor-not-allowed border-white/10 opacity-60'
+							: 'cursor-pointer',
 						colorStore.activeColor.toLowerCase() === color.hex.toLowerCase()
 							? 'scale-105 border-white/50'
 							: 'border-transparent hover:scale-105 hover:border-white/40',
 					]"
 					:style="{ background: color.hex }"
-				></button>
+				>
+					<span
+						v-if="paywallStore.isSwatchLocked(index)"
+						class="annoy-lock-label"
+					>
+						PRO
+					</span>
+				</button>
 			</div>
 		</div>
 	</div>

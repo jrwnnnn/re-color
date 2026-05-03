@@ -7,4 +7,5 @@ contextBridge.exposeInMainWorld("electronAPI", {
 	saveImage: (dataURL) => ipcRenderer.invoke("save-image", dataURL),
 	onUndo: (callback) => ipcRenderer.on("menu:undo", callback),
 	onRedo: (callback) => ipcRenderer.on("menu:redo", callback),
+	listAds: () => ipcRenderer.invoke("list-ads"),
 });

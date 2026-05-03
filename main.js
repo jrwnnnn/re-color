@@ -93,3 +93,15 @@ ipcMain.handle("save-image", async (_, dataURL) => {
 	const base64 = dataURL.replace(/^data:image\/png;base64,/, "");
 	fs.writeFileSync(filePath, Buffer.from(base64, "base64"));
 });
+
+ipcMain.handle("list-ads", async () => {
+	const adsDir = app.isPackaged
+		? path.join(__dirname, "dist", "ads")
+		: path.join(__dirname, "public", "ads");
+	try {
+		const entries = await fs.promises.readdir(adsDir);
+		return entries.filter((name) => !name.startsWith("."));
+	} catch {
+		return [];
+	}
+});
