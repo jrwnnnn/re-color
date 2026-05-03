@@ -28,6 +28,10 @@ function createWindow() {
 					click: () => win.webContents.send("menu:new-canvas"),
 				},
 				{
+					label: "SpeedDraw",
+					click: () => win.webContents.send("menu:speeddraw"),
+				},
+				{
 					label: "Export",
 					accelerator: "Ctrl+S",
 					click: () => win.webContents.send("menu:export"),
