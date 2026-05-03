@@ -7,23 +7,32 @@ First off, thanks for taking the time to contribute! These are the guidelines fo
 Make sure you have the latest LTS version of [Node.js](https://nodejs.org/en/download/current) installed.
 
 Clone the repository:
+
 ```bash
 git clone https://github.com/jrwnnnn/re-color.git
 cd re-color
 ```
+
 Install the required dependencies:
+
 ```bash
 npm ci
 ```
+
 Start the development server:
+
 ```bash
 npm run dev
 ```
+
 Bundle the project for production:
+
 ```bash
 npm run build
 ```
+
 ## Testing
+
 Before submitting a pull request, ensure everything passes locally:
 
 ```bash
@@ -35,19 +44,24 @@ npm run linting
 
 # Run typechecking
 npm run typecheck
+
+# Run smoketests
+npm run smoketest
 ```
+
 ## CI Checks
 
 All pull requests must pass the [GitHub Actions](https://github.com/jrwnnnn/re-color/actions/workflows/main.yml) before they can be merged. The CI runs the following checks:
 
 - Linting
 - Typechecking
+- Smoketests
 - Build
 - CodeQL analysis
-  
+
 ## Code Style
 
-This project enforces a consistent code style using [Prettier](https://prettier.io/). 
+This project enforces a consistent code style using [Prettier](https://prettier.io/).
 
 A `.prettierrc` file is included in the project root to configure Prettier. Please ensure that your code adheres to the formatting rules defined in this file before submitting a pull request.
 
