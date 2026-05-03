@@ -4,7 +4,7 @@
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
 	"main": "main.js",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"scripts": {
 		"dev": "concurrently --kill-others \"vite\" \"electron main.js\"",
 		"build": "vite build && electron-builder",
