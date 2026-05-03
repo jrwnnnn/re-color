@@ -11,16 +11,25 @@
 	--text-xxs: 10px;
 }
 
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("fonts/JetBrainsMono.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 html,
 body,
 #app {
 	@apply bg-surface h-full w-full overflow-hidden text-white;
-	font-family: "Segoe UI", system-ui, sans-serif;
+	font-family: "JetBrains Mono", system-ui, sans-serif;
 	user-select: none;
 }
 
 .pcr-app {
 	@apply bg-accent filter-none;
+	font-family: "JetBrains Mono", system-ui, sans-serif !important;
 }
 .pcr-app[data-mode="deuteranopia"] {
 	filter: url(#deuteranopia);
