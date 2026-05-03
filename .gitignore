@@ -1,8 +1,7 @@
 # build output
 dist/
-dist-ssr/
 
-# releases
+# electron build output
 release/
 
 # vite
@@ -11,8 +10,8 @@ release/
 # dependencies
 node_modules/
 
-# test Files
-test*
+# playwright test results
+test-results/
 
 # logs
 npm-debug.log*
