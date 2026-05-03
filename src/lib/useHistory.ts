@@ -8,7 +8,7 @@ export function useHistory(getDrawLayer: () => Konva.Layer) {
 
 	function saveSnapshot(node: Konva.Node) {
 		undoStack.push(node);
-		if (undoStack.length > MAX_HISTORY) undoStack.shift();
+		if (undoStack.length >= MAX_HISTORY) undoStack.shift();
 		redoStack.length = 0;
 	}
 
