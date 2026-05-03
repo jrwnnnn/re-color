@@ -1,11 +1,14 @@
 import Konva from "konva";
 
+const MAX_HISTORY = 50;
+
 export function useHistory(getDrawLayer: () => Konva.Layer) {
 	const undoStack: Konva.Node[] = [];
 	const redoStack: Konva.Node[] = [];
 
 	function saveSnapshot(node: Konva.Node) {
 		undoStack.push(node);
+		if (undoStack.length > MAX_HISTORY) undoStack.shift();
 		redoStack.length = 0;
 	}
 
