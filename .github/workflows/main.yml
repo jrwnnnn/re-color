@@ -29,6 +29,29 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
 
+  smoketest:
+  needs: [lint, typecheck]
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24
+        cache: "npm"
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run smoketest
+      run: npx playwright install
+      run: npm run smoketest
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: test-results/
+
   codeql:
     runs-on: ubuntu-latest
     permissions:
@@ -47,7 +70,7 @@ jobs:
         uses: github/codeql-action/analyze@v4
 
   build:
-    needs: [lint, typecheck, codeql]
+    needs: [lint, typecheck, smoketest, codeql]
     runs-on: windows-latest
     permissions:
       contents: read
