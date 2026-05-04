@@ -7,6 +7,8 @@ contextBridge.exposeInMainWorld("electronAPI", {
 	setSpeedDrawActive: (isActive) =>
 		ipcRenderer.send("speeddraw:set-active", isActive),
 	onExport: (callback) => ipcRenderer.on("menu:export", callback),
+	setExportVisible: (visible) =>
+		ipcRenderer.send("export:set-visible", visible),
 	saveImage: (dataURL) => ipcRenderer.invoke("save-image", dataURL),
 	onUndo: (callback) => ipcRenderer.on("menu:undo", callback),
 	onRedo: (callback) => ipcRenderer.on("menu:redo", callback),

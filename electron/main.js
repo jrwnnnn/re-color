@@ -33,8 +33,6 @@ function createWindow() {
 		}
 	});
 
-	let speedDrawSubmenuItem;
-
 	const menu = Menu.buildFromTemplate([
 		{
 			label: "File",
@@ -96,11 +94,17 @@ function createWindow() {
 			],
 		},
 	]);
-	speedDrawSubmenuItem = menu.items[0].submenu.items[1];
+	const speedDrawSubmenuItem = menu.items[0].submenu.items[1];
+	const exportSubmenuItem = menu.items[0].submenu.items[2];
+
 	Menu.setApplicationMenu(menu);
 
 	ipcMain.on("speeddraw:set-active", (_, isActive) => {
 		speedDrawSubmenuItem.visible = !isActive;
+	});
+
+	ipcMain.on("export:set-visible", (_, visible) => {
+		exportSubmenuItem.visible = visible;
 	});
 
 	!app.isPackaged
