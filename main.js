@@ -43,7 +43,7 @@ function createWindow() {
 					click: () => win.webContents.send("menu:new-canvas"),
 				},
 				{
-					label: "SpeedDraw",
+					label: "New SpeedDraw session",
 					click: () => win.webContents.send("menu:speeddraw"),
 				},
 				{
