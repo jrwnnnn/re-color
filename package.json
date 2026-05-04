@@ -3,10 +3,10 @@
 	"description": "A paint app for people with color-vision difficulties.",
 	"author": "jrwnnnn, kcirdneH, Idonowhatnametouse",
 	"license": "MIT",
-	"main": "main.js",
+	"main": "electron/main.js",
 	"version": "0.4.0",
 	"scripts": {
-		"dev": "concurrently --kill-others \"vite\" \"electron main.js\"",
+		"dev": "concurrently --kill-others \"vite\" \"electron electron/main.js\"",
 		"build": "vite build && electron-builder",
 		"lint": "eslint .",
 		"typecheck": "vue-tsc --noEmit",
@@ -18,8 +18,8 @@
 		"productName": "Re:Color",
 		"files": [
 			"dist/**/*",
-			"main.js",
-			"preload.js"
+			"electron/main.js",
+			"electron/preload.js"
 		],
 		"directories": {
 			"output": "release"
