@@ -30,6 +30,7 @@ const { newCanvas, exportCanvas, restoreFromDataURL } = useCanvas(
 	clearHistory,
 	containerRef,
 );
+
 const { handleMouseDown, handleMouseMove, handleMouseUp } = useTools(
 	getDrawLayer,
 	getPos,
@@ -60,6 +61,10 @@ onMounted(async () => {
 	stage.on("mousemove touchmove", handleMouseMove);
 	stage.on("mouseup touchend", handleMouseUp);
 
+	window.addEventListener("mouseup", handleMouseUp);
+
+	window.electronAPI?.onUndo(() => undo());
+	window.electronAPI?.onRedo(() => redo());
 	window.electronAPI?.onNewCanvas(() => newCanvas());
 	window.electronAPI?.onExport(async () => {
 		const dataURL = exportCanvas();
@@ -69,6 +74,11 @@ onMounted(async () => {
 	window.electronAPI?.onRedo(() => redo());
 });
 
+onUnmounted(() => {
+	window.removeEventListener("mouseup", handleMouseUp);
+	destroy();
+});
+
 watch(
 	() => colorStore.mode,
 	(mode) => {
@@ -76,8 +86,6 @@ watch(
 	},
 	{ immediate: true },
 );
-
-onUnmounted(() => destroy());
 </script>
 
 <template>
