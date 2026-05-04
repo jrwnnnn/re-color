@@ -32,7 +32,10 @@ defineEmits<{ finish: [] }>();
 			</span>
 			<button
 				@click="$emit('finish')"
-				class="border-accent text-muted cursor-pointer rounded border px-3 py-px transition-colors hover:border-white hover:text-white"
+				:class="[
+					'border-accent text-muted cursor-pointer rounded border px-3 py-px transition-colors hover:border-white/50 hover:text-white',
+					!started && 'hidden',
+				]"
 			>
 				Done
 			</button>

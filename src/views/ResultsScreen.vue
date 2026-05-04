@@ -62,18 +62,28 @@ onUnmounted(() => {
 		<div
 			ref="resultsRef"
 			class="bg-surface flex w-full max-w-3xl flex-col items-center gap-8 px-8 py-8"
+			s
 		>
 			<div class="flex w-full items-center justify-between">
-				<img
-					src="@/assets/re-color.png"
-					alt="Re:Color"
-					class="h-8 object-contain"
-				/>
-				<div class="flex flex-col items-end gap-0.5">
-					<p class="text-muted text-xs tracking-widest uppercase">SpeedDraw</p>
-					<p class="text-sm font-semibold">{{ store.theme }}</p>
+				<div class="flex w-full items-center gap-3">
+					<img
+						src="@/assets/re-color.png"
+						alt="Re:Color"
+						class="h-8 object-contain"
+					/>
+					<div class="flex flex-col gap-0.5">
+						<p class="text-muted text-xs tracking-widest uppercase">
+							Re:Color SpeedDraw
+						</p>
+						<p class="text-sm font-semibold">{{ store.theme }}</p>
+					</div>
+				</div>
+				<div class="flex flex-col items-end">
+					<p class="text-muted text-xs tracking-widest uppercase">Time</p>
+					<p class="font-light">{{ elapsed }}</p>
 				</div>
 			</div>
+
 			<div class="border-accent w-full overflow-hidden rounded-lg border">
 				<img
 					v-if="store.canvasDataURL"
@@ -82,27 +92,23 @@ onUnmounted(() => {
 					class="w-full object-contain"
 				/>
 			</div>
-			<div class="flex flex-col items-center gap-1">
-				<p class="text-muted text-xs tracking-widest uppercase">Time</p>
-				<p class="font-mono text-4xl font-light tabular-nums">{{ elapsed }}</p>
-			</div>
 		</div>
 		<div class="mt-8 flex items-center gap-3">
 			<button
 				@click="savePainting"
-				class="border-accent hover:bg-panel cursor-pointer rounded-md border px-5 py-2 text-sm"
+				class="border-accent hover:bg-panel cursor-pointer rounded-sm border px-5 py-2 text-sm"
 			>
 				Save Painting
 			</button>
 			<button
 				@click="saveResult"
-				class="border-accent hover:bg-panel cursor-pointer rounded-md border px-5 py-2 text-sm"
+				class="border-accent hover:bg-panel cursor-pointer rounded-sm border px-5 py-2 text-sm"
 			>
 				Save Result
 			</button>
 			<button
 				@click="continueDrawing"
-				class="bg-highlight hover:bg-highlight/90 cursor-pointer rounded-md px-5 py-2 text-sm font-bold"
+				class="bg-highlight hover:bg-highlight/90 cursor-pointer rounded-sm px-5 py-2 text-sm font-bold"
 			>
 				Continue Drawing
 			</button>
