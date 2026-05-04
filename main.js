@@ -18,6 +18,21 @@ function createWindow() {
 
 	win.maximize();
 
+	win.on('close', (e) => {
+		e.preventDefault();
+
+		const choice = dialog.showMessageBoxSync(win, {
+			type: 'question',
+			buttons: ['Yes', 'No'],
+			title: 'Confirm',
+			message: 'Are you sure you want to quit? Unsaved changes may be lost.'
+		});
+
+		if (choice === 0) {
+			win.destroy();
+		}
+	});
+
 	const menu = Menu.buildFromTemplate([
 		{
 			label: "File",
@@ -93,3 +108,4 @@ ipcMain.handle("save-image", async (_, dataURL) => {
 	const base64 = dataURL.replace(/^data:image\/png;base64,/, "");
 	fs.writeFileSync(filePath, Buffer.from(base64, "base64"));
 });
+
