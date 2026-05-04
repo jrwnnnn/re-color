@@ -51,6 +51,10 @@ export function useSpeedDraw(
 		},
 	);
 
+	watch(isSpeedDraw, (active) => {
+		window.electronAPI?.setSpeedDrawActive(active);
+	});
+
 	return {
 		isSpeedDraw,
 		timerStarted,

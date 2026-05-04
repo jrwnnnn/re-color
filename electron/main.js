@@ -18,20 +18,22 @@ function createWindow() {
 
 	win.maximize();
 
-	win.on('close', (e) => {
+	win.on("close", (e) => {
 		e.preventDefault();
 
 		const choice = dialog.showMessageBoxSync(win, {
-			type: 'question',
-			buttons: ['Yes', 'No'],
-			title: 'Confirm',
-			message: 'Are you sure you want to quit? Unsaved changes may be lost.'
+			type: "question",
+			buttons: ["Yes", "No"],
+			title: "Confirm",
+			message: "Are you sure you want to quit? Unsaved changes may be lost.",
 		});
 
 		if (choice === 0) {
 			win.destroy();
 		}
 	});
+
+	let speedDrawSubmenuItem;
 
 	const menu = Menu.buildFromTemplate([
 		{
@@ -94,7 +96,12 @@ function createWindow() {
 			],
 		},
 	]);
+	speedDrawSubmenuItem = menu.items[0].submenu.items[1];
 	Menu.setApplicationMenu(menu);
+
+	ipcMain.on("speeddraw:set-active", (_, isActive) => {
+		speedDrawSubmenuItem.visible = !isActive;
+	});
 
 	!app.isPackaged
 		? win.loadURL("http://localhost:5173")
@@ -112,4 +119,3 @@ ipcMain.handle("save-image", async (_, dataURL) => {
 	const base64 = dataURL.replace(/^data:image\/png;base64,/, "");
 	fs.writeFileSync(filePath, Buffer.from(base64, "base64"));
 });
-
