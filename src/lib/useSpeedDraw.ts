@@ -22,7 +22,7 @@ export function useSpeedDraw(
 		router.push("/results");
 	}
 
-	const timer = useTimer(15 * 60, finish);
+	const timer = useTimer(10 * 60, finish);
 
 	// Start the timer on first stroke instead of immediately. Give the user some time.
 	function onFirstStroke() {

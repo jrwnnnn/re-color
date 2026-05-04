@@ -28,7 +28,7 @@ defineEmits<{ finish: [] }>();
 							: 'text-white/60'
 				"
 			>
-				{{ started ? formatted : "15:00" }}
+				{{ started ? formatted : "10:00" }}
 			</span>
 			<button
 				@click="$emit('finish')"
