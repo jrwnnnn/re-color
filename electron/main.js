@@ -7,7 +7,7 @@ function createWindow() {
 	const win = new BrowserWindow({
 		minWidth: 900,
 		minHeight: 600,
-		icon: path.join(__dirname, "dist/icon.ico"),
+		icon: path.join(__dirname, "../dist/icon.ico"),
 		webPreferences: {
 			devTools: !app.isPackaged,
 			nodeIntegration: false,
@@ -94,7 +94,7 @@ function createWindow() {
 
 	!app.isPackaged
 		? win.loadURL("http://localhost:5173")
-		: win.loadFile(path.join(__dirname, "dist/index.html"));
+		: win.loadFile(path.join(__dirname, "../dist/index.html"));
 }
 
 app.whenReady().then(createWindow);
