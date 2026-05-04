@@ -121,7 +121,8 @@ export function useTools(
 	}
 
 	function handleMouseUp() {
-		if (isDrawing && currentShape) saveSnapshot(currentShape);
+		if (!isDrawing) return;
+		if (currentShape) saveSnapshot(currentShape);
 		isDrawing = false;
 		currentShape = null;
 		startPos = null;
