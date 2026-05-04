@@ -17,9 +17,15 @@ const colorStore = useColorStore();
 const rootRef = ref<HTMLDivElement>();
 const containerRef = ref<HTMLDivElement>();
 
-const { init, destroy, getPos, getStage, getDrawLayer } = useStage(containerRef);
+const { init, destroy, getPos, getStage, getDrawLayer } =
+	useStage(containerRef);
 const { saveSnapshot, undo, redo, clearHistory } = useHistory(getDrawLayer);
-const { newCanvas, exportCanvas } = useCanvas(getStage, getDrawLayer, clearHistory, containerRef);
+const { newCanvas, exportCanvas } = useCanvas(
+	getStage,
+	getDrawLayer,
+	clearHistory,
+	containerRef,
+);
 
 const { handleMouseDown, handleMouseMove, handleMouseUp } = useTools(
 	getDrawLayer,
@@ -39,14 +45,20 @@ onMounted(() => {
 	stage.on("mousemove touchmove", handleMouseMove);
 	stage.on("mouseup touchend", handleMouseUp);
 
+	window.addEventListener("mouseup", handleMouseUp);
+
 	window.electronAPI?.onUndo(() => undo());
 	window.electronAPI?.onRedo(() => redo());
-
 	window.electronAPI?.onNewCanvas(() => newCanvas());
 	window.electronAPI?.onExport(async () => {
 		const dataURL = exportCanvas();
 		await window.electronAPI?.saveImage(dataURL);
 	});
+});
+
+onUnmounted(() => {
+	window.removeEventListener("mouseup", handleMouseUp);
+	destroy();
 });
 
 watch(
@@ -56,8 +68,6 @@ watch(
 	},
 	{ immediate: true },
 );
-
-onUnmounted(() => destroy());
 </script>
 
 <template>
