@@ -30,7 +30,7 @@ export function useTools(
 			currentShape = new Konva.Line({
 				points: [pos.x, pos.y, pos.x, pos.y],
 				stroke: tool === "eraser" ? "#ffffff" : color,
-				strokeWidth: tool === "eraser" ? size * 2 : size,
+				strokeWidth: size,
 				tension: tool === "brush" ? 0.4 : 0,
 				lineCap: "round",
 				lineJoin: "round",
