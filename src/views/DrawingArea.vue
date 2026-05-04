@@ -63,8 +63,6 @@ onMounted(async () => {
 
 	window.addEventListener("mouseup", handleMouseUp);
 
-	window.electronAPI?.onUndo(() => undo());
-	window.electronAPI?.onRedo(() => redo());
 	window.electronAPI?.onNewCanvas(() => newCanvas());
 	window.electronAPI?.onExport(async () => {
 		const dataURL = exportCanvas();
