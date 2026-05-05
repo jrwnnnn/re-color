@@ -18,14 +18,14 @@ function createWindow() {
 
 	win.maximize();
 
-	win.on('close', (e) => {
+	win.on("close", (e) => {
 		e.preventDefault();
 
 		const choice = dialog.showMessageBoxSync(win, {
-			type: 'question',
-			buttons: ['Yes', 'No'],
-			title: 'Confirm',
-			message: 'Are you sure you want to quit? Unsaved changes may be lost.'
+			type: "question",
+			buttons: ["Yes", "No"],
+			title: "Confirm",
+			message: "Are you sure you want to quit? Unsaved changes may be lost.",
 		});
 
 		if (choice === 0) {
@@ -41,6 +41,10 @@ function createWindow() {
 					label: "New",
 					accelerator: "Ctrl+N",
 					click: () => win.webContents.send("menu:new-canvas"),
+				},
+				{
+					label: "New SpeedDraw session",
+					click: () => win.webContents.send("menu:speeddraw"),
 				},
 				{
 					label: "Export",
@@ -69,6 +73,7 @@ function createWindow() {
 		{
 			label: "View",
 			submenu: [
+				{ role: "reload" },
 				...(!app.isPackaged ? [{ role: "toggleDevTools" }] : []),
 				{ type: "separator" },
 				{ role: "resetZoom" },
@@ -89,7 +94,18 @@ function createWindow() {
 			],
 		},
 	]);
+	const speedDrawSubmenuItem = menu.items[0].submenu.items[1];
+	const exportSubmenuItem = menu.items[0].submenu.items[2];
+
 	Menu.setApplicationMenu(menu);
+
+	ipcMain.on("speeddraw:set-active", (_, isActive) => {
+		speedDrawSubmenuItem.visible = !isActive;
+	});
+
+	ipcMain.on("export:set-visible", (_, visible) => {
+		exportSubmenuItem.visible = visible;
+	});
 
 	!app.isPackaged
 		? win.loadURL("http://localhost:5173")
@@ -107,4 +123,3 @@ ipcMain.handle("save-image", async (_, dataURL) => {
 	const base64 = dataURL.replace(/^data:image\/png;base64,/, "");
 	fs.writeFileSync(filePath, Buffer.from(base64, "base64"));
 });
-

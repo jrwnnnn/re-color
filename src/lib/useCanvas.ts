@@ -43,5 +43,18 @@ export function useCanvas(
 		return dataURL;
 	}
 
-	return { newCanvas, exportCanvas };
+	async function restoreFromDataURL(dataURL: string) {
+		return new Promise<void>((resolve) => {
+			const img = new window.Image();
+			img.onload = () => {
+				const konvaImg = new Konva.Image({ image: img, x: 0, y: 0 });
+				getDrawLayer().add(konvaImg);
+				getDrawLayer().batchDraw();
+				resolve();
+			};
+			img.src = dataURL;
+		});
+	}
+
+	return { newCanvas, exportCanvas, restoreFromDataURL };
 }

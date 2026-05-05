@@ -43,9 +43,11 @@
 	"dependencies": {
 		"@simonwep/pickr": "^1.9.1",
 		"color-namer": "^1.4.0",
+		"html-to-image": "^1.11.13",
 		"konva": "^9.3.6",
 		"pinia": "^2.1.7",
-		"vue": "^3.5.32"
+		"vue": "^3.5.32",
+		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
