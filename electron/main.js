@@ -90,6 +90,7 @@ function createWindow() {
 				},
 				{
 					label: "About Re:Color",
+					click: () => win.webContents.send("menu:about"),
 				},
 			],
 		},

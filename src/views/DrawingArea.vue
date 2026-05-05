@@ -9,6 +9,7 @@ import { useCanvas } from "@/lib/useCanvas";
 import { useTools } from "@/lib/useTools";
 import { useKeyboardShortcuts } from "@/lib/useKeyboardShortcuts";
 import { useSpeedDraw } from "@/lib/useSpeedDraw";
+import { router } from "@/router";
 import Toolbar from "@/components/ToolBar.vue";
 import ColorBar from "@/components/ColorBar.vue";
 import StatusBar from "@/components/StatusBar.vue";
@@ -70,6 +71,9 @@ onMounted(async () => {
 	});
 	window.electronAPI?.onUndo(() => undo());
 	window.electronAPI?.onRedo(() => redo());
+	window.electronAPI?.moveToAbout(() => {
+		router.push("/about");
+	});
 });
 
 onUnmounted(() => {
