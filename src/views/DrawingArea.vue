@@ -77,6 +77,11 @@ onUnmounted(() => {
 	destroy();
 });
 
+onUnmounted(() => {
+	window.removeEventListener("mouseup", handleMouseUp);
+	destroy();
+});
+
 watch(
 	() => colorStore.mode,
 	(mode) => {
