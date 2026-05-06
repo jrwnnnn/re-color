@@ -7,24 +7,19 @@ import logo from "@/assets/re-color.png";
 		<div class="container">
 			<img class="hero-image" :src="logo" alt="re-color logo" />
 			<header>
-				<h1>About re-color</h1>
+				<h1>About Re:Color</h1>
 				<p>
-					re-color is a lightweight, practical tool designed to simplify color
-					workflows for web and design projects.
+					<em>A paint app for people with color-vision difficulties.</em>
 				</p>
 			</header>
 
-			<router-link class="cta-button" to="/"
-				>Enter the digital canvas</router-link
-			>
-
 			<section>
-				<h2>What it does</h2>
+				<h2>What does Re:Color do?</h2>
 				<p>
-					re-color helps users manage, preview, and switch color palettes with
-					ease. It is built to support designers, developers, and creative teams
-					who want faster color iteration and cleaner visual consistency across
-					interfaces.
+					Re:Color is a desktop paint app for users with color-blindness and
+					color-vision difficulties. It features live color simulation for
+					deuteranopia, protanopia, and tritanopia, plus a color namer tool.
+					Built with Electron, Vue.js, and TypeScript.
 				</p>
 			</section>
 
@@ -33,31 +28,37 @@ import logo from "@/assets/re-color.png";
 				<ul class="feature-list">
 					<li>Palette creation and management</li>
 					<li>Live previews for color combinations</li>
-					<li>Accessible contrast checking</li>
+					<li>The SpeedDraw game mode</li>
 					<li>Export-ready color values for CSS and design tools</li>
 				</ul>
 			</section>
 
 			<section>
-				<h2>Why re-color exists</h2>
+				<h2>Why Re:Color exists</h2>
 				<p>
-					Choosing the right colors is a critical part of building modern
-					interfaces. re-color was created to reduce the friction around testing
-					palettes and to make color decisions more intentional, reliable, and
-					repeatable.
+					Re:Color exists to provide an accessible digital art platform that
+					bridges the gap for color-blind users through built-in, system-level
+					color correction tools. Its core purpose is to foster inclusivity by
+					enabling these individuals to create digital art with greater accuracy
+					and independence.
 				</p>
 			</section>
 
 			<section>
 				<h2>Getting started</h2>
+				<router-link class="cta-button" to="/"
+					>Enter the digital canvas</router-link
+				>
 				<p>
-					To begin using re-color, explore the project interface and load or
+					To begin using Re:Color, explore the project interface and load or
 					create a palette. Experiment with different combinations until you
 					find the visual system that fits your product or brand.
 				</p>
 			</section>
 
 			<footer>
+				<hr />
+				<p>For any concerns or feedback, please open an issue on GitHub.</p>
 				<a
 					class="support-button"
 					href="https://github.com/jrwnnnn/re-color"
@@ -65,7 +66,6 @@ import logo from "@/assets/re-color.png";
 					rel="noopener noreferrer"
 					>Support on GitHub</a
 				>
-				<p>Built for the re-color project.</p>
 			</footer>
 		</div>
 	</div>
@@ -73,11 +73,13 @@ import logo from "@/assets/re-color.png";
 
 <style scoped>
 .about-page {
-	min-height: 100vh;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	font-family: Inter, Arial, sans-serif;
+	align-items: flex-start;
+	padding-top: 20px;
+	overflow-y: auto;
+	font-family: "Montserrat", sans-serif;
 	line-height: 1.6;
 	background:
 		radial-gradient(
@@ -94,6 +96,23 @@ import logo from "@/assets/re-color.png";
 		),
 		#0f0f11;
 	color: #ececec;
+}
+
+.about-page::-webkit-scrollbar {
+	width: 12px;
+}
+
+.about-page::-webkit-scrollbar-track {
+	background: rgba(15, 15, 18, 0.5);
+}
+
+.about-page::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #ff6b82, #b56dff);
+	border-radius: 6px;
+}
+
+.about-page::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #ff8fab, #c27cff);
 }
 
 .container {
@@ -132,6 +151,7 @@ p {
 	margin: 18px auto;
 	max-width: 740px;
 	color: #d7d7e2;
+	font-weight: 300;
 }
 
 .feature-list {
@@ -211,7 +231,14 @@ p {
 
 footer p {
 	margin: 32px auto 0;
-	font-size: 0.95rem;
+	font-size: 0.75rem;
 	color: #a7a0b8;
+	font-weight: 300;
+}
+
+footer hr {
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	margin: 20px 0;
 }
 </style>
