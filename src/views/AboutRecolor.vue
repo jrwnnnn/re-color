@@ -1,4 +1,217 @@
-<script lang="ts"></script>
+<script setup lang="ts">
+import logo from "@/assets/re-color.png";
+</script>
+
 <template>
-	<div class="h-full w-full"></div>
+	<div class="about-page">
+		<div class="container">
+			<img class="hero-image" :src="logo" alt="re-color logo" />
+			<header>
+				<h1>About re-color</h1>
+				<p>
+					re-color is a lightweight, practical tool designed to simplify color
+					workflows for web and design projects.
+				</p>
+			</header>
+
+			<router-link class="cta-button" to="/"
+				>Enter the digital canvas</router-link
+			>
+
+			<section>
+				<h2>What it does</h2>
+				<p>
+					re-color helps users manage, preview, and switch color palettes with
+					ease. It is built to support designers, developers, and creative teams
+					who want faster color iteration and cleaner visual consistency across
+					interfaces.
+				</p>
+			</section>
+
+			<section>
+				<h2>Key features</h2>
+				<ul class="feature-list">
+					<li>Palette creation and management</li>
+					<li>Live previews for color combinations</li>
+					<li>Accessible contrast checking</li>
+					<li>Export-ready color values for CSS and design tools</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Why re-color exists</h2>
+				<p>
+					Choosing the right colors is a critical part of building modern
+					interfaces. re-color was created to reduce the friction around testing
+					palettes and to make color decisions more intentional, reliable, and
+					repeatable.
+				</p>
+			</section>
+
+			<section>
+				<h2>Getting started</h2>
+				<p>
+					To begin using re-color, explore the project interface and load or
+					create a palette. Experiment with different combinations until you
+					find the visual system that fits your product or brand.
+				</p>
+			</section>
+
+			<footer>
+				<a
+					class="support-button"
+					href="https://github.com/jrwnnnn/re-color"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Support on GitHub</a
+				>
+				<p>Built for the re-color project.</p>
+			</footer>
+		</div>
+	</div>
 </template>
+
+<style scoped>
+.about-page {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Inter, Arial, sans-serif;
+	line-height: 1.6;
+	background:
+		radial-gradient(
+			circle at top left,
+			#ff5d7a 0%,
+			rgba(255, 93, 122, 0.18) 15%,
+			transparent 35%
+		),
+		radial-gradient(
+			circle at bottom right,
+			#7c5aff 0%,
+			rgba(124, 90, 255, 0.2) 18%,
+			transparent 40%
+		),
+		#0f0f11;
+	color: #ececec;
+}
+
+.container {
+	width: min(100%, 820px);
+	margin: 24px;
+	padding: 36px 36px 32px;
+	background: rgba(15, 15, 18, 0.95);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+	border-radius: 28px;
+	text-align: center;
+}
+
+h1,
+h2 {
+	margin: 0;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+}
+
+h1 {
+	font-size: clamp(2.2rem, 4vw, 3.6rem);
+	margin-bottom: 14px;
+	background: linear-gradient(130deg, #ff6b82, #b56dff);
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+h2 {
+	font-size: clamp(1.4rem, 2vw, 1.9rem);
+	margin: 36px 0 12px;
+	color: #f3f3f8;
+}
+
+p {
+	margin: 18px auto;
+	max-width: 740px;
+	color: #d7d7e2;
+}
+
+.feature-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	max-width: 540px;
+}
+
+.feature-list li {
+	margin: 12px 0;
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feature-list li:last-child {
+	border-bottom: none;
+}
+
+.hero-image {
+	display: block;
+	max-width: 280px;
+	width: 100%;
+	margin: 0 auto 28px;
+	border-radius: 28px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.cta-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 28px;
+	margin: 20px auto;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #111;
+	background: linear-gradient(135deg, #ff8fab, #c27cff);
+	border: none;
+	border-radius: 999px;
+	text-decoration: none;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	box-shadow: 0 18px 40px rgba(255, 111, 153, 0.3);
+}
+
+.cta-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 22px 46px rgba(255, 111, 153, 0.4);
+}
+
+.support-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 24px;
+	margin: 22px auto 0;
+	font-size: 0.95rem;
+	font-weight: 700;
+	color: #ffffff;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 999px;
+	text-decoration: none;
+	transition:
+		transform 0.2s ease,
+		background 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.support-button:hover {
+	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.16);
+	border-color: rgba(255, 111, 153, 0.35);
+}
+
+footer p {
+	margin: 32px auto 0;
+	font-size: 0.95rem;
+	color: #a7a0b8;
+}
+</style>
