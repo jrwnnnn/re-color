@@ -1,5 +1,12 @@
 /* eslint-disable */
-const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
+const {
+	app,
+	BrowserWindow,
+	Menu,
+	ipcMain,
+	shell,
+	dialog,
+} = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -31,6 +38,14 @@ function createWindow() {
 		if (choice === 0) {
 			win.destroy();
 		}
+	});
+
+	win.webContents.setWindowOpenHandler(({ url }) => {
+		if (url.startsWith("http://localhost") || url.startsWith("file://")) {
+			return { action: "allow" };
+		}
+		shell.openExternal(url);
+		return { action: "deny" };
 	});
 
 	const menu = Menu.buildFromTemplate([

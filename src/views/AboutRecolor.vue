@@ -1,244 +1,45 @@
 <script setup lang="ts">
-import logo from "@/assets/re-color.png";
+import { router } from "@/router";
 </script>
 
 <template>
-	<div class="about-page">
-		<div class="container">
-			<img class="hero-image" :src="logo" alt="re-color logo" />
-			<header>
-				<h1>About Re:Color</h1>
-				<p>
-					<em>A paint app for people with color-vision difficulties.</em>
-				</p>
-			</header>
-
-			<section>
-				<h2>What does Re:Color do?</h2>
-				<p>
-					Re:Color is a desktop paint app for users with color-blindness and
-					color-vision difficulties. It features live color simulation for
-					deuteranopia, protanopia, and tritanopia, plus a color namer tool.
-					Built with Electron, Vue.js, and TypeScript.
-				</p>
-			</section>
-
-			<section>
-				<h2>Key features</h2>
-				<ul class="feature-list">
-					<li>Palette creation and management</li>
-					<li>Live previews for color combinations</li>
-					<li>The SpeedDraw game mode</li>
-					<li>Export-ready color values for CSS and design tools</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>Why Re:Color exists</h2>
-				<p>
-					Re:Color exists to provide an accessible digital art platform that
-					bridges the gap for color-blind users through built-in, system-level
-					color correction tools. Its core purpose is to foster inclusivity by
-					enabling these individuals to create digital art with greater accuracy
-					and independence.
-				</p>
-			</section>
-
-			<section>
-				<h2>Getting started</h2>
-				<router-link class="cta-button" to="/"
-					>Enter the digital canvas</router-link
+	<div
+		class="flex h-screen w-screen items-center justify-center bg-linear-to-br from-pink-500/10 via-transparent to-violet-500/10"
+	>
+		<div class="flex gap-5 rounded-lg p-10">
+			<div class="space-y-2">
+				<p
+					class="text-muted cursor-pointer hover:text-white/50"
+					@click="router.push('/')"
 				>
-				<p>
-					To begin using Re:Color, explore the project interface and load or
-					create a palette. Experiment with different combinations until you
-					find the visual system that fits your product or brand.
+					Go back
 				</p>
-			</section>
-
-			<footer>
-				<hr />
-				<p>For any concerns or feedback, please open an issue on GitHub.</p>
-				<a
-					class="support-button"
-					href="https://github.com/jrwnnnn/re-color"
-					target="_blank"
-					rel="noopener noreferrer"
-					>Support on GitHub</a
-				>
-			</footer>
+				<div class="flex justify-between">
+					<span class="flex items-end gap-3">
+						<p class="text-4xl font-bold">Re:Color</p>
+						<p class="text-muted text-lg">v1.0.0</p>
+					</span>
+				</div>
+				<p class="text-white/80">
+					A paint app for people with color-vision difficulties.
+				</p>
+				<div class="mt-10 flex gap-5">
+					<a
+						href="https://github.com/jrwnnnn/re-color"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img src="@/assets/github.png" class="h-7 w-7 invert" />
+					</a>
+					<a
+						href="https://github.com/jrwnnnn/re-color/issues"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img src="@/assets/bug.png" class="h-7 w-7 invert" />
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
-
-<style scoped>
-.about-page {
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	padding-top: 20px;
-	overflow-y: auto;
-	font-family: "Montserrat", sans-serif;
-	line-height: 1.6;
-	background:
-		radial-gradient(
-			circle at top left,
-			#ff5d7a 0%,
-			rgba(255, 93, 122, 0.18) 15%,
-			transparent 35%
-		),
-		radial-gradient(
-			circle at bottom right,
-			#7c5aff 0%,
-			rgba(124, 90, 255, 0.2) 18%,
-			transparent 40%
-		),
-		#0f0f11;
-	color: #ececec;
-}
-
-.about-page::-webkit-scrollbar {
-	width: 12px;
-}
-
-.about-page::-webkit-scrollbar-track {
-	background: rgba(15, 15, 18, 0.5);
-}
-
-.about-page::-webkit-scrollbar-thumb {
-	background: linear-gradient(180deg, #ff6b82, #b56dff);
-	border-radius: 6px;
-}
-
-.about-page::-webkit-scrollbar-thumb:hover {
-	background: linear-gradient(180deg, #ff8fab, #c27cff);
-}
-
-.container {
-	width: min(100%, 820px);
-	margin: 24px;
-	padding: 36px 36px 32px;
-	background: rgba(15, 15, 18, 0.95);
-	border: 1px solid rgba(255, 255, 255, 0.08);
-	box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
-	border-radius: 28px;
-	text-align: center;
-}
-
-h1,
-h2 {
-	margin: 0;
-	font-weight: 700;
-	letter-spacing: -0.03em;
-}
-
-h1 {
-	font-size: clamp(2.2rem, 4vw, 3.6rem);
-	margin-bottom: 14px;
-	background: linear-gradient(130deg, #ff6b82, #b56dff);
-	-webkit-background-clip: text;
-	color: transparent;
-}
-
-h2 {
-	font-size: clamp(1.4rem, 2vw, 1.9rem);
-	margin: 36px 0 12px;
-	color: #f3f3f8;
-}
-
-p {
-	margin: 18px auto;
-	max-width: 740px;
-	color: #d7d7e2;
-	font-weight: 300;
-}
-
-.feature-list {
-	list-style: none;
-	padding: 0;
-	margin: 0 auto;
-	max-width: 540px;
-}
-
-.feature-list li {
-	margin: 12px 0;
-	padding: 10px 0;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.feature-list li:last-child {
-	border-bottom: none;
-}
-
-.hero-image {
-	display: block;
-	max-width: 280px;
-	width: 100%;
-	margin: 0 auto 28px;
-	border-radius: 28px;
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-}
-
-.cta-button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 14px 28px;
-	margin: 20px auto;
-	font-size: 1rem;
-	font-weight: 700;
-	color: #111;
-	background: linear-gradient(135deg, #ff8fab, #c27cff);
-	border: none;
-	border-radius: 999px;
-	text-decoration: none;
-	transition:
-		transform 0.2s ease,
-		box-shadow 0.2s ease;
-	box-shadow: 0 18px 40px rgba(255, 111, 153, 0.3);
-}
-
-.cta-button:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 22px 46px rgba(255, 111, 153, 0.4);
-}
-
-.support-button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 12px 24px;
-	margin: 22px auto 0;
-	font-size: 0.95rem;
-	font-weight: 700;
-	color: #ffffff;
-	background: rgba(255, 255, 255, 0.08);
-	border: 1px solid rgba(255, 255, 255, 0.14);
-	border-radius: 999px;
-	text-decoration: none;
-	transition:
-		transform 0.2s ease,
-		background 0.2s ease,
-		border-color 0.2s ease;
-}
-
-.support-button:hover {
-	transform: translateY(-1px);
-	background: rgba(255, 255, 255, 0.16);
-	border-color: rgba(255, 111, 153, 0.35);
-}
-
-footer p {
-	margin: 32px auto 0;
-	font-size: 0.75rem;
-	color: #a7a0b8;
-	font-weight: 300;
-}
-
-footer hr {
-	border: none;
-	border-top: 1px solid rgba(255, 255, 255, 0.08);
-	margin: 20px 0;
-}
-</style>
