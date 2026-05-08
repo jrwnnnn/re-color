@@ -101,6 +101,8 @@ function createWindow() {
 			submenu: [
 				{
 					label: "Report an Issue",
+					click: () =>
+						shell.openExternal("https://github.com/jrwnnnn/re-color/issues"),
 				},
 				{
 					label: "About Re:Color",
