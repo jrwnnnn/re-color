@@ -48,6 +48,9 @@ function preventBack() {
 onMounted(() => {
 	history.pushState(null, "", location.href);
 	window.addEventListener("popstate", preventBack);
+	window.electronAPI?.moveToAbout(() => {
+		router.push("/about");
+	});
 });
 
 onUnmounted(() => {
