@@ -96,6 +96,7 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 				orient="vertical"
 				:value="store.brushSize"
 				@input="store.setBrushSize(+($event.target as HTMLInputElement).value)"
+				class="w-1 h-30"
 			/>
 			<span class="text-muted text-xxs text-center"
 				>{{ store.brushSize }}px</span
@@ -108,8 +109,6 @@ const tools: { id: Tool; label: string; shortcut: string; icon: Component }[] =
 input[type="range"][orient="vertical"] {
 	writing-mode: vertical-lr;
 	direction: rtl;
-	height: 80px;
-	width: 4px;
 	accent-color: #4d9eff;
 	cursor: pointer;
 }
