@@ -17,7 +17,7 @@ import { router } from "@/router";
 				<div class="flex justify-between">
 					<span class="flex items-end gap-3">
 						<p class="text-4xl font-bold">Re:Color</p>
-						<p class="text-muted text-lg">v1.0.0</p>
+						<p class="text-muted text-lg">v1.1.0</p>
 					</span>
 				</div>
 				<p class="text-white/80">
